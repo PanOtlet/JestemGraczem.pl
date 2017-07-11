@@ -1,0 +1,7 @@
+class DatabaseConfig:
+
+    db_name = "name"
+    db_username = "username"
+    db_password = "password"
+    db_host = "localhost"
+    db_port = 3306

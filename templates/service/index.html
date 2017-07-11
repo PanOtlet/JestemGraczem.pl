@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block body %}
+    {% for player in mixer.all %}
+        <li><a href="{% url 'stream.mixer' player.name %}">{{ player.name }}</a></li>
+    {% endfor %}
+    {% for player in twitch.all %}
+        <li>{{ player.name }}</li>
+    {% endfor %}
+{% endblock %}
