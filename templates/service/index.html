@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block body %}
+{% block main %}
     {% for player in mixer.all %}
         <li><a href="{% url 'stream.mixer' player.name %}">{{ player.name }}</a></li>
     {% endfor %}
