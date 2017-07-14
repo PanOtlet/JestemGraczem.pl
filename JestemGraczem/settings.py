@@ -11,11 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-from config.config import DatabaseConfig
-# import pymysql
-#
-#
-# pymysql.install_as_MySQLdb()
+from config.config import DatabaseConfig, AdminConfig
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,10 +21,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '@qx5=c17#qg0t80-g(7+6cnv2r_8mqi$4fm!#4@@h3$3d7#(q-'
+SECRET_KEY = AdminConfig.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = AdminConfig.DEBUG_MODE
 
 ALLOWED_HOSTS = []
 
@@ -102,11 +98,11 @@ DATABASES = {
 
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': DatabaseConfig.db_name,
-        'USER': DatabaseConfig.db_username,
-        'PASSWORD': DatabaseConfig.db_password,
-        'HOST': DatabaseConfig.db_host,
-        'PORT': DatabaseConfig.db_port,
+        'NAME': DatabaseConfig.DB_NAME,
+        'USER': DatabaseConfig.DB_USERNAME,
+        'PASSWORD': DatabaseConfig.DB_PASSWORD,
+        'HOST': DatabaseConfig.DB_HOST,
+        'PORT': DatabaseConfig.DB_PORT,
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES', innodb_strict_mode=1",
         },
@@ -117,8 +113,9 @@ REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+    ],
+    'PAGE_SIZE': 10
 }
 
 

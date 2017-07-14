@@ -1,5 +1,6 @@
 <!doctype html>
 <html class="no-js" lang="pl">
+{% load static %}
 <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -15,7 +16,7 @@
                 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-<nav class="light-blue lighten-1" role="navigation">
+<nav class="purple darken-4" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="{% url 'index' %}" class="brand-logo">
         JestemGraczem.pl
     </a>
@@ -30,33 +31,68 @@
     </div>
 </nav>
 {% block main %}{% endblock %}
-<footer class="page-footer orange">
+<footer class="page-footer purple darken-4">
     <div class="container">
         <div class="row">
             <div class="col l6 s12">
-                <h5 class="white-text">Company Bio</h5>
-                <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's
-                    our full time job. Any amount would help support and continue development on this project and is
-                    greatly appreciated.</p>
-
-
+                <h5 class="white-text">JestemGraczem.pl</h5>
+                <p class="grey-text text-lighten-4">
+                    We are the champions!
+                </p>
             </div>
             <div class="col l3 s12">
-                <h5 class="white-text">Settings</h5>
+                <h5 class="white-text">Więcej JG:</h5>
                 <ul>
-                    <li><a class="white-text" href="#!">Link 1</a></li>
-                    <li><a class="white-text" href="#!">Link 2</a></li>
-                    <li><a class="white-text" href="#!">Link 3</a></li>
-                    <li><a class="white-text" href="#!">Link 4</a></li>
+                    <li>
+                        <a class="white-text" href="https://facebook.com/JestemGraczemPL">
+                            Facebook
+                        </a>
+                    </li>
+                    <li>
+                        <a class="white-text" href="https://mixer.com/otlet">
+                            Mixer Stream
+                        </a>
+                    </li>
+                    <li>
+                        <a class="white-text" href="https://mixer.com/team/polishstreamers">
+                            Mixer Team
+                        </a>
+                    </li>
+                    <li>
+                        <a class="white-text" href="https://twitch.tv/otlet">
+                            Twitch
+                        </a>
+                    </li>
+                    <li>
+                        <a class="white-text" href="https://youtube.com/PanOtlet">
+                            YouTube
+                        </a>
+                    </li>
+                    <li>
+                        <a class="white-text" href="http://blog.jestemgraczem.pl">
+                            Blog
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="col l3 s12">
-                <h5 class="white-text">Connect</h5>
+                <h5 class="white-text">Przydatne strony</h5>
                 <ul>
-                    <li><a class="white-text" href="#!">Link 1</a></li>
-                    <li><a class="white-text" href="#!">Link 2</a></li>
-                    <li><a class="white-text" href="#!">Link 3</a></li>
-                    <li><a class="white-text" href="#!">Link 4</a></li>
+                    <li>
+                        <a class="white-text" href="#!">
+                            Regulamin
+                        </a>
+                    </li>
+                    <li>
+                        <a class="white-text" href="#!">
+                            Polityka prywatności
+                        </a>
+                    </li>
+                    <li>
+                        <a class="white-text" href="#!">
+                            Zostań partnerem!
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -69,6 +105,7 @@
 </footer>
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
 </body>
 </html>

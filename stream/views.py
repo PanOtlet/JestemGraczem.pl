@@ -2,10 +2,8 @@ from django.shortcuts import redirect
 from service import views
 from .models import Mixer, Twitch
 from django.shortcuts import get_object_or_404, render
-from rest_framework import status
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from .serializers import TwitchSerializer
+from rest_framework import viewsets
+from .serializers import TwitchSerializer, MixerSerializer
 
 
 def index(request):
@@ -22,16 +20,11 @@ def twitch(request, username):
     return render(request, 'player/twitch.html', {'player': player})
 
 
-@api_view(['GET'])
-def twitch_detail(request, pk):
-    """
-    Retrieve, update or delete a snippet instance.
-    """
-    try:
-        twitchobj = Twitch.objects.get(pk=pk)
-    except Twitch.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
+class TwitchViewSet(viewsets.ModelViewSet):
+    queryset = Twitch.objects.all().order_by('-partner')
+    serializer_class = TwitchSerializer
 
-    if request.method == 'GET':
-        serializer = TwitchSerializer(twitchobj)
-        return Response(serializer.data)
+
+class MixerViewSet(viewsets.ModelViewSet):
+    queryset = Mixer.objects.all().order_by('-partner')
+    serializer_class = MixerSerializer
