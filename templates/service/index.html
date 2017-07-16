@@ -1,14 +1,33 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block main %}
-    <div class="container">
-
+    <div class="stream-container">
+        <div class="carousel">
+            {% for player in twitch.all %}
+                <a class="carousel-item" href="{% url 'stream.twitch' player.name %}">
+                    <img src="https://static-cdn.jtvnw.net/previews-ttv/live_user_{{ player.name }}-640x360.jpg"
+                         alt="{{ player.name }}">
+                </a>
+            {% endfor %}
+        </div>
+        <div class="carousel">
+            {% for player in mixer.all %}
+                <a class="carousel-item" href="{% url 'stream.mixer' player.name %}">{{ player.name }}</a>
+            {% endfor %}
+        </div>
     </div>
+{% endblock %}
 
-
-        {% for player in mixer.all %}
-            <li><a href="{% url 'stream.mixer' player.name %}">{{ player.name }}</a></li>
-        {% endfor %}
-        {% for player in twitch.all %}
-            <li>{{ player.name }}</li>
-        {% endfor %}
+{% block javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"
+            integrity="sha256-iaqfO5ue0VbSGcEiQn+OeXxnxAMK2+QgHXIDA5bWtGI=" crossorigin="anonymous"></script>
+    <script src="{% static "js/stream.js" %}"></script>
+    <script>
+        var stream = new Stream('{% url 'twitch-list' %}');
+        $(document).ready(function () {
+            stream.start();
+            $('.carousel').carousel();
+        });
+        $('.carousel.carousel-slider').carousel({fullWidth: true});
+    </script>
 {% endblock %}

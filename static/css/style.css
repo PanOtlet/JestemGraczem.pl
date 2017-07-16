@@ -1,3 +1,15 @@
 .player {
     margin-top: 1rem;
 }
+
+/*
+    Carousel
+ */
+.stream-container {
+    margin-top: 1rem;
+}
+.carousel .carousel-item {
+    display: none;
+    width: 640px;
+    height: 480px;
+}
