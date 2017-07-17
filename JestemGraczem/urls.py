@@ -31,9 +31,9 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
 
 router = routers.DefaultRouter()
-router.register(r'/users', UserViewSet)
-router.register(r'/twitch', TwitchViewSet)
-router.register(r'/mixer', MixerViewSet)
+router.register(r'users', UserViewSet)
+router.register(r'twitch', TwitchViewSet)
+router.register(r'mixer', MixerViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),

@@ -1,11 +1,12 @@
 class AdminConfig:
-    debug_mode = True
+    DEBUG_MODE = True
+    SECRET_KEY = ''
 
 
 class DatabaseConfig:
 
-    db_name = "name"
-    db_username = "username"
-    db_password = "password"
-    db_host = "localhost"
-    db_port = 3306
+    DB_NAME = ""
+    DB_USERNAME = ""
+    DB_PASSWORD = ""
+    DB_HOST = "localhost"
+    DB_PORT = 5432

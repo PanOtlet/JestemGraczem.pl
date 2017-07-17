@@ -57,3 +57,6 @@ ENV/
 out
 gen
 config/config.py
+tux
+static/admin
+static/rest_framework

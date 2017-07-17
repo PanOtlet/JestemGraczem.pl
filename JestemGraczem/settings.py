@@ -28,6 +28,7 @@ DEBUG = AdminConfig.DEBUG_MODE
 
 ALLOWED_HOSTS = [
     'jestemgraczem'
+    'localhost'
 ]
 
 
@@ -43,10 +44,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-]
-
-SILENCED_SYSTEM_CHECKS = [
-    'django_mysql.W002',
 ]
 
 MIDDLEWARE = [
@@ -99,15 +96,12 @@ DATABASES = {
     # }
 
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': DatabaseConfig.DB_NAME,
         'USER': DatabaseConfig.DB_USERNAME,
         'PASSWORD': DatabaseConfig.DB_PASSWORD,
         'HOST': DatabaseConfig.DB_HOST,
-        'PORT': DatabaseConfig.DB_PORT,
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES', innodb_strict_mode=1",
-        },
+        'PORT': DatabaseConfig.DB_PORT
     }
 }
 
