@@ -3,7 +3,7 @@ from .models import Twitch, Mixer
 
 
 class TwitchSerializer(serializers.HyperlinkedModelSerializer):
-    highlight = serializers.HyperlinkedIdentityField(view_name='twitchapi', format='html')
+    # highlight = serializers.HyperlinkedIdentityField(view_name='twitchapi', format='html')
 
     class Meta:
         model = Twitch

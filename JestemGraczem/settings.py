@@ -27,8 +27,7 @@ SECRET_KEY = AdminConfig.SECRET_KEY
 DEBUG = AdminConfig.DEBUG_MODE
 
 ALLOWED_HOSTS = [
-    'jestemgraczem'
-    'localhost'
+    '*'
 ]
 
 

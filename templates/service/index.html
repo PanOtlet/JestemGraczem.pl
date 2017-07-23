@@ -10,11 +10,11 @@
                 </a>
             {% endfor %}
         </div>
-        <div class="carousel">
-            {% for player in mixer.all %}
-                <a class="carousel-item" href="{% url 'stream.mixer' player.name %}">{{ player.name }}</a>
-            {% endfor %}
-        </div>
+{#        <div class="carousel">#}
+{#            {% for player in mixer.all %}#}
+{#                <a class="carousel-item" href="{% url 'stream.mixer' player.name %}">{{ player.name }}</a>#}
+{#            {% endfor %}#}
+{#        </div>#}
     </div>
 {% endblock %}
 
@@ -23,9 +23,8 @@
             integrity="sha256-iaqfO5ue0VbSGcEiQn+OeXxnxAMK2+QgHXIDA5bWtGI=" crossorigin="anonymous"></script>
     <script src="{% static "js/stream.js" %}"></script>
     <script>
-        var stream = new Stream('{% url 'twitch-list' %}');
         $(document).ready(function () {
-            stream.start();
+            Stream.start('{% url 'twitch-list' %}');
             $('.carousel').carousel();
         });
         $('.carousel.carousel-slider').carousel({fullWidth: true});
