@@ -3,18 +3,18 @@
 {% block main %}
     <div class="stream-container">
         <div class="carousel">
-            {% for player in twitch.all %}
-                <a class="carousel-item" href="{% url 'stream.twitch' player.name %}">
-                    <img src="https://static-cdn.jtvnw.net/previews-ttv/live_user_{{ player.name }}-640x360.jpg"
-                         alt="{{ player.name }}">
-                </a>
-            {% endfor %}
-        </div>
-{#        <div class="carousel">#}
-{#            {% for player in mixer.all %}#}
-{#                <a class="carousel-item" href="{% url 'stream.mixer' player.name %}">{{ player.name }}</a>#}
+{#            {% for player in twitch.all %}#}
+{#                <a class="carousel-item" href="{% url 'stream.twitch' player.name %}">#}
+{#                    <img src="https://static-cdn.jtvnw.net/previews-ttv/live_user_{{ player.name }}-640x360.jpg"#}
+{#                         alt="{{ player.name }}">#}
+{#                </a>#}
 {#            {% endfor %}#}
-{#        </div>#}
+        </div>
+        {#        <div class="carousel">#}
+        {#            {% for player in mixer.all %}#}
+        {#                <a class="carousel-item" href="{% url 'stream.mixer' player.name %}">{{ player.name }}</a>#}
+        {#            {% endfor %}#}
+        {#        </div>#}
     </div>
 {% endblock %}
 
@@ -24,9 +24,7 @@
     <script src="{% static "js/stream.js" %}"></script>
     <script>
         $(document).ready(function () {
-            Stream.start('{% url 'twitch-list' %}');
-            $('.carousel').carousel();
+            Stream.start('{% url 'stream.live' %}','{% url 'stream.mixer' '_' %}','{% url 'stream.twitch' '_' %}');
         });
-        $('.carousel.carousel-slider').carousel({fullWidth: true});
     </script>
 {% endblock %}

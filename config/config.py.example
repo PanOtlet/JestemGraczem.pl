@@ -1,6 +1,7 @@
 class AdminConfig:
     DEBUG_MODE = True
     SECRET_KEY = ''
+    TWITCH_API_KEY = ''
 
 
 class DatabaseConfig:
