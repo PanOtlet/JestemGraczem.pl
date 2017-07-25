@@ -2,19 +2,23 @@
 {% load static %}
 {% block main %}
     <div class="stream-container">
-        <div class="carousel">
-{#            {% for player in twitch.all %}#}
-{#                <a class="carousel-item" href="{% url 'stream.twitch' player.name %}">#}
-{#                    <img src="https://static-cdn.jtvnw.net/previews-ttv/live_user_{{ player.name }}-640x360.jpg"#}
-{#                         alt="{{ player.name }}">#}
-{#                </a>#}
-{#            {% endfor %}#}
-        </div>
-        {#        <div class="carousel">#}
-        {#            {% for player in mixer.all %}#}
-        {#                <a class="carousel-item" href="{% url 'stream.mixer' player.name %}">{{ player.name }}</a>#}
-        {#            {% endfor %}#}
-        {#        </div>#}
+        <div class="carousel"></div>
+    </div>
+    <div class="row">
+        {% for video in youtube %}
+            <div class="col s12 m4">
+                <div class="card">
+                    <div class="card-image">
+                        <a href="https://youtube.com/watch?v={{ video.video_id }}">
+                            <img src="http://img.youtube.com/vi/{{ video.video_id }}/maxresdefault.jpg">
+                            <span class="card-title">
+                                <span class="new badge" data-badge-caption="na YouTube">{{ video.name }}</span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}
 
@@ -24,7 +28,7 @@
     <script src="{% static "js/stream.js" %}"></script>
     <script>
         $(document).ready(function () {
-            Stream.start('{% url 'stream.live' %}','{% url 'stream.mixer' '_' %}','{% url 'stream.twitch' '_' %}');
+            Stream.start('{% url 'stream.live' %}', '{% url 'stream.mixer' '_' %}', '{% url 'stream.twitch' '_' %}');
         });
     </script>
 {% endblock %}

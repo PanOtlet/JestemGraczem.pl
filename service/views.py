@@ -1,11 +1,11 @@
-from stream.models import Mixer, Twitch
+from stream.models import YouTube
 from django.shortcuts import render
 
 
 def index(request):
-    mixer = Mixer.objects.all()
-    twitch = Twitch.objects.all()
+    youtube = YouTube.objects.order_by('-id')[:20]
     return render(request, 'service/index.html', {
-        'mixer': mixer,
-        'twitch': twitch
+        # 'mixer': mixer,
+        # 'twitch': twitch
+        'youtube': youtube
     })

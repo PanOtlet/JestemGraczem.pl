@@ -1,6 +1,8 @@
 from django.contrib import admin
 
-from .models import Twitch, Mixer
+from .models import YouTube
 
-admin.site.register(Twitch)
-admin.site.register(Mixer)
+
+@admin.register(YouTube)
+class YouTubeAdmin(admin.ModelAdmin):
+    list_display = ('name', 'video_id')
