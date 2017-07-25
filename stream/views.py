@@ -28,12 +28,7 @@ def mixer(request, username):
 
 def twitch(request, username):
     # player = get_object_or_404(Twitch, name=username)
-    twitch_client = twitch_api()
-    username2 = twitch_client.users.translate_usernames_to_ids(username)
-    community = twitch_client.channels.get_community(username2[0].id)
-    if community.id == community_id:
-        return render(request, 'player/twitch.html', {'player': username})
-    raise Http404("Streamer nie jest partnerem JestemGraczem.pl!")
+    return render(request, 'player/twitch.html', {'player': username})
 
 
 def stream_api(request):
