@@ -4,7 +4,7 @@ var Stream = {
     start: function (url, mixer_url, twitch_url) {
         twitch_url = twitch_url.replace("_/", '');
         mixer_url = mixer_url.replace("_/", '');
-        this.template = '<a class="carousel-item" href="' + twitch_url + '{{ 0 }}">' +
+        this.template = '<a class="carousel-item hoverable" href="' + twitch_url + '{{ 0 }}">' +
             '<img src="https://static-cdn.jtvnw.net/previews-ttv/live_user_{{ 1 }}-640x360.jpg"' +
             ' alt="{{ 0 }}"></a>';
         if (localStorage['timestamp'] < Date.now() - 60)
