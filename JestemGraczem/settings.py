@@ -27,16 +27,13 @@ SECRET_KEY = AdminConfig.SECRET_KEY
 DEBUG = AdminConfig.DEBUG_MODE
 
 ALLOWED_HOSTS = [
-    'localhost',
-    'jestemgraczem',
-    'beta.jestemgraczem.pl',
-    'jestemgraczem.pl'
+    '*'
 ]
 
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# SECURE_SSL_REDIRECT = True
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
 
 # Application definition
 

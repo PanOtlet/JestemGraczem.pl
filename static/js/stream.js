@@ -8,7 +8,7 @@ var Stream = {
     },
     generate: function (data, mixer_url, twitch_url) {
         twitch_url = twitch_url.replace("_/",'');
-        mixer_url = mixer_url.replace("_",'');
+        mixer_url = mixer_url.replace("_/",'');
         if (data.length === 0) {
             $(".stream-container .carousel").append('<div class="video-container">' +
                 '<iframe allowfullscreen ' +
@@ -17,9 +17,10 @@ var Stream = {
                 '</div>')
         } else {
             for (var i = 0; i < data.length; i++) {
+                console.error(data[i][0]);
                 $(".stream-container .carousel").append(Mustache.render(
                     '<a class="carousel-item" href="'+ twitch_url +'{{ 0 }}">' +
-                    '<img src="https://static-cdn.jtvnw.net/previews-ttv/live_user_{{ 0 }}-640x360.jpg"' +
+                    '<img src="https://static-cdn.jtvnw.net/previews-ttv/live_user_{{ 1 }}-640x360.jpg"' +
                     ' alt="{{ 0 }}"></a>'
                     , data[i]));
             }

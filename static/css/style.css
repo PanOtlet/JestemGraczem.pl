@@ -1,3 +1,10 @@
+body {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
 .player {
     margin-top: 1rem;
 }
@@ -8,6 +15,7 @@
 .stream-container {
     margin-top: 1rem;
 }
+
 .carousel .carousel-item {
     display: none;
     width: 640px;
