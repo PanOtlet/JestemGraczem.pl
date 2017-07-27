@@ -53,6 +53,7 @@ def stream_api(request):
     twitch_players_id = []
     for player in twitch_players:
         twitch_players_id.append(player.name)
+    pprint(twitch_players_id)
     twitch_channels = twitch_client.users.translate_usernames_to_ids(twitch_players_id)
     twitch_channels_ids = ''
     for channel in twitch_channels:
