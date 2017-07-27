@@ -6,8 +6,7 @@ var Stream = {
         twitch_url = twitch_url.replace("_/", '');
         mixer_url = mixer_url.replace("_/", '');
         this.template = '<a class="carousel-item hoverable" href="' + twitch_url + '{{ 0 }}">' +
-            '<img src="{{ 3 }}"' +
-            ' alt="{{ 0 }}"></a>';
+            '<img class="responsive-img" src="{{ 3 }}" alt="{{ 0 }}"></a>';
         if (localStorage['timestamp'] < Date.now() - 60)
             $.get(url, function (data, status) {
                 test = data;

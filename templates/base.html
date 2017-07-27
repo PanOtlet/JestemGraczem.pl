@@ -39,27 +39,48 @@
     <![endif]-->
 
 <nav class="purple darken-4" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="{% url 'index' %}" class="brand-logo">
-        JestemGraczem.pl
-    </a>
+    <div class="nav-wrapper container">
+        <a id="logo-container" href="{% url 'index' %}" class="brand-logo tooltipped" data-position="bottom" data-delay="50" data-tooltip="JestemGraczem.pl">
+            <i class="fa fa-gamepad" aria-hidden="true"></i>
+        </a>
+        <a href="#" data-activates="nav-mobile" class="button-collapse">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </a>
         <ul class="right hide-on-med-and-down">
-            <li><a href="https://forum.jestemgraczem.pl">Forum</a></li>
+            <li>
+                <a href="https://forum.jestemgraczem.pl">
+                    <i class="fa fa-comments" aria-hidden="true"></i> Forum
+                </a>
+            </li>
             <li>
                 <a href="https://forum.jestemgraczem.pl/topic/5-jak-doda%C4%87-stream-na-stron%C4%99-g%C5%82%C3%B3wn%C4%85/">
-                    Dodaj stream
+                    <i class="fa fa-plus" aria-hidden="true"></i> Dodaj stream
+                </a>
+            </li>
+            <li>
+                <a href="https://forum.jestemgraczem.pl/topic/5-jak-doda%C4%87-stream-na-stron%C4%99-g%C5%82%C3%B3wn%C4%85/">
+                    <i class="fa fa-plus" aria-hidden="true"></i> Dodaj film
                 </a>
             </li>
         </ul>
 
-        <ul id="nav-mobile" class="side-nav">
-            <li><a href="https://forum.jestemgraczem.pl">Forum</a></li>
+        <ul class="side-nav" id="nav-mobile">
+            <li>
+                <a href="https://forum.jestemgraczem.pl">
+                    <i class="fa fa-comments" aria-hidden="true"></i> Forum
+                </a>
+            </li>
             <li>
                 <a href="https://forum.jestemgraczem.pl/topic/5-jak-doda%C4%87-stream-na-stron%C4%99-g%C5%82%C3%B3wn%C4%85/">
-                    Dodaj stream
+                    <i class="fa fa-plus" aria-hidden="true"></i> Dodaj stream
+                </a>
+            </li>
+            <li>
+                <a href="https://forum.jestemgraczem.pl/topic/5-jak-doda%C4%87-stream-na-stron%C4%99-g%C5%82%C3%B3wn%C4%85/">
+                    <i class="fa fa-plus" aria-hidden="true"></i> Dodaj film
                 </a>
             </li>
         </ul>
-        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
 </nav>
 {% block main %}{% endblock %}
@@ -139,10 +160,12 @@
         </div>
     </div>
 </footer>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+{#<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>#}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+<script src="https://use.fontawesome.com/bd86b21063.js"></script>
 {% block javascripts %}{% endblock %}
 </body>
 </html>
