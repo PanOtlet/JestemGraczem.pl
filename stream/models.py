@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 class Twitch(models.Model):
     name = models.CharField(max_length=23)
-    twitch_id = models.IntegerField()
+    twitch_id = models.IntegerField(null=True)
     add_date = models.DateTimeField('date published')
     owner = models.ForeignKey(User)
     partner = models.BooleanField(default=False)
