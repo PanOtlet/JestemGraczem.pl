@@ -52,7 +52,7 @@ def stream_api(request):
     twitch_players = Twitch.objects.all().filter(banned=False)
     twitch_players_ids = ''
     for player in twitch_players:
-        twitch_players_ids += player.twitch_id + ','
+        twitch_players_ids += str(player.twitch_id) + ','
     streams = []
     twitch_streams = twitch_client.streams.get_live_streams(twitch_players_ids)
     if twitch_streams.__len__() == 0:
