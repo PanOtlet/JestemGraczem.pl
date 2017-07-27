@@ -50,16 +50,11 @@ def twitch(request, username):
 def stream_api(request):
     twitch_client = twitch_api()
     twitch_players = Twitch.objects.all().filter(banned=False)
-    twitch_players_id = []
+    twitch_players_ids = ''
     for player in twitch_players:
-        twitch_players_id.append(player.name)
-    pprint(twitch_players_id)
-    twitch_channels = twitch_client.users.translate_usernames_to_ids(twitch_players_id)
-    twitch_channels_ids = ''
-    for channel in twitch_channels:
-        twitch_channels_ids += channel.id + ','
+        twitch_players_ids += player.twitch_id + ','
     streams = []
-    twitch_streams = twitch_client.streams.get_live_streams(twitch_channels_ids)
+    twitch_streams = twitch_client.streams.get_live_streams(twitch_players_ids)
     if twitch_streams.__len__() == 0:
         twitch_streams = twitch_client.streams.get_streams_in_community(fake_community_id)
     for stream in twitch_streams:
@@ -67,7 +62,8 @@ def stream_api(request):
             stream.channel.display_name,
             stream.channel.display_name.lower(),
             stream.game,
-            stream.preview["large"]
+            stream.preview["large"],
+            stream.id
         ])
     return JsonResponse(streams, safe=False)
 
