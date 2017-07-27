@@ -2,6 +2,7 @@ var test;
 var Stream = {
     template: '',
     start: function (url, mixer_url, twitch_url) {
+        this.checkExistsStorage();
         twitch_url = twitch_url.replace("_/", '');
         mixer_url = mixer_url.replace("_/", '');
         this.template = '<a class="carousel-item hoverable" href="' + twitch_url + '{{ 0 }}">' +
@@ -13,14 +14,23 @@ var Stream = {
                 localStorage['timestamp'] = Date.now();
                 localStorage['streamData'] = JSON.stringify(data);
             });
-        Stream.generate(JSON.parse(localStorage['streamData']), mixer_url, twitch_url);
+        var jsonStreamData = JSON.parse(localStorage['streamData']);
+        Stream.generate(jsonStreamData, mixer_url, twitch_url);
     },
     generate: function (data) {
         for (var i = 0; i < data.length; i++) {
-            console.log('dupa');
             $(".stream-container .carousel").append(Mustache.render(this.template, data[i]));
         }
         $('.carousel.carousel-slider').carousel({fullWidth: true});
         $('.carousel').carousel();
+    },
+    checkExistsStorage: function () {
+        if (typeof localStorage['streamData'] === 'undefined') {
+            localStorage['streamData']='';
+        }
+
+        if (typeof localStorage['timestamp'] === 'undefined'){
+            localStorage['timestamp']=Date.now()/1000;
+        }
     }
 };
