@@ -56,7 +56,7 @@ def stream_api(request):
     streams = []
     twitch_streams = twitch_client.streams.get_live_streams(twitch_players_ids)
     if twitch_streams.__len__() == 0:
-        twitch_streams = twitch_client.streams.get_streams_in_community(fake_community_id)
+        twitch_streams = twitch_client.streams.get_live_streams(language='pl')
     for stream in twitch_streams:
         streams.append([
             stream.channel.display_name,
