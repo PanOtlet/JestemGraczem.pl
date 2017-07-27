@@ -31,12 +31,34 @@ def twitch(request, username):
     return render(request, 'player/twitch.html', {'player': username})
 
 
+# def stream_api(request):
+#     twitch_client = twitch_api()
+#     twitch_streams = twitch_client.streams.get_streams_in_community(community_id)
+#     streams = []
+#     if twitch_streams.__len__() == 0:
+#         twitch_streams = twitch_client.streams.get_streams_in_community(fake_community_id)
+#     for stream in twitch_streams:
+#         streams.append([
+#             stream.channel.display_name,
+#             stream.channel.display_name.lower(),
+#             stream.game,
+#             stream.preview["large"]
+#         ])
+#     return JsonResponse(streams, safe=False)
+
+
 def stream_api(request):
     twitch_client = twitch_api()
-    twitch_streams = twitch_client.streams.get_streams_in_community(community_id)
+    twitch_players = Twitch.objects.all().filter(banned=False)
+    twitch_players_id = []
+    for player in twitch_players:
+        twitch_players_id.append(player.name)
+    twitch_channels = twitch_client.users.translate_usernames_to_ids(twitch_players_id)
+    twitch_channels_ids = ''
+    for channel in twitch_channels:
+        twitch_channels_ids += channel.id + ','
     streams = []
-    if twitch_streams.__len__() == 0:
-        twitch_streams = twitch_client.streams.get_streams_in_community(fake_community_id)
+    twitch_streams = twitch_client.streams.get_live_streams(twitch_channels_ids)
     for stream in twitch_streams:
         streams.append([
             stream.channel.display_name,

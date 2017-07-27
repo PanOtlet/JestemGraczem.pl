@@ -28,7 +28,7 @@
     <script src="{% static "js/stream.js" %}"></script>
     <script>
         $(document).ready(function () {
-            Stream.start('{% url 'stream.live' %}', '{% url 'stream.mixer' '_' %}', '{% url 'stream.twitch' '_' %}');
+            Stream.start('{% url 'stream.live2' %}', '{% url 'stream.mixer' '_' %}', '{% url 'stream.twitch' '_' %}');
         });
     </script>
 {% endblock %}
