@@ -1,12 +1,57 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block main %}
-    <div class="stream-container">
+    <div class="black">
+        <div class="container">
+            <ul class="tabs tabs-transparent">
+                <li class="tab">
+                    <a class="active" href="#livestream">Live Streams</a>
+                </li>
+                <li class="tab">
+                    <a href="#esport">eSport</a>
+                </li>
+                <li class="tab">
+                    <a href="#youtube">YouTube</a>
+                </li>
+                {#                <li class="tab disabled">#}
+                {#                    <a href="#test3">#}
+                {#                        Konkursy <span class="new badge red" data-badge-caption="Wkrótce"></span>#}
+                {#                    </a>#}
+                {#                </li>#}
+            </ul>
+        </div>
+    </div>
+
+    <div id="livestream" class="stream-container">
         <div class="carousel"></div>
     </div>
-    <div class="row">
+
+    <div id="esport" class="container">
+        <div class="row">
+            <div class="col s12 m12">
+                <div class="card black">
+                    <div class="card-content white-text">
+                        <span class="card-title">eSport</span>
+                        <p>
+                            Promowanie eSportu jest jednym z naszych celów. Już niedługo pojawią się w tej zakładce
+                            streamy znanych profesjonalistów, ale i amatorów grających w ligach. Jeśli znacie chętnych,
+                            by dołączyć do eSportowych streamerów to niech skontaktują się z nami! Jesteśmy otwarci na
+                            każdą współpracę!
+                        </p>
+                    </div>
+                    <div class="card-action">
+                        <a href="https://forum.jestemgraczem.pl/messenger/compose/?to=1">Kontakt przez forum</a>
+                        <a href="mailto:otlet@otlet.pl">Kontakt email</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="youtube" class="row">
         {% for video in youtube %}
-            <div class="col s12 m4">
+            <div class="col s12 m3">
                 <div class="card hoverable">
                     <div class="card-image">
                         <a href="https://youtube.com/watch?v={{ video.video_id }}">

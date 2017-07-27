@@ -38,9 +38,10 @@
                 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-<nav class="purple darken-4" role="navigation">
+<nav class="black" role="navigation">
     <div class="nav-wrapper container">
-        <a id="logo-container" href="{% url 'index' %}" class="brand-logo tooltipped" data-position="bottom" data-delay="50" data-tooltip="JestemGraczem.pl">
+        <a id="logo-container" href="{% url 'index' %}" class="brand-logo tooltipped" data-position="bottom"
+           data-delay="50" data-tooltip="JestemGraczem.pl">
             <i class="fa fa-gamepad" aria-hidden="true"></i>
         </a>
         <a href="#" data-activates="nav-mobile" class="button-collapse">
@@ -83,8 +84,10 @@
         </ul>
     </div>
 </nav>
-{% block main %}{% endblock %}
-<footer class="page-footer purple darken-4">
+<main>
+    {% block main %}{% endblock %}
+</main>
+<footer class="page-footer black">
     <div class="container">
         <div class="row">
             <div class="col l6 s12">
@@ -161,11 +164,14 @@
     </div>
 </footer>
 {#<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>#}
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 <script src="https://use.fontawesome.com/bd86b21063.js"></script>
+<script>
+    $(".button-collapse").sideNav();
+</script>
 {% block javascripts %}{% endblock %}
 </body>
 </html>
