@@ -19,7 +19,7 @@ main {
 /*
     Carousel
  */
-.stream-container {
+.stream-container, .esport-stream-container {
     padding-top: 2rem;
 }
 

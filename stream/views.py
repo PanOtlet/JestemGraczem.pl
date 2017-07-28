@@ -3,7 +3,7 @@ from pprint import pprint
 from django.shortcuts import redirect, get_object_or_404, render
 from config.config import AdminConfig
 from service import views
-from .models import Mixer, Twitch
+from .models import Mixer, Twitch, ESportTwitch
 from rest_framework import viewsets
 from .serializers import TwitchSerializer, MixerSerializer
 from twitch import TwitchClient
@@ -57,6 +57,25 @@ def stream_api(request):
     twitch_streams = twitch_client.streams.get_live_streams(twitch_players_ids)
     if twitch_streams.__len__() == 0:
         twitch_streams = twitch_client.streams.get_live_streams(language='pl')
+    for stream in twitch_streams:
+        streams.append([
+            stream.channel.display_name,
+            stream.channel.display_name.lower(),
+            stream.game,
+            stream.preview["large"],
+            stream.id
+        ])
+    return JsonResponse(streams, safe=False)
+
+
+def esport_stream_api(request):
+    twitch_client = twitch_api()
+    twitch_players = ESportTwitch.objects.all()
+    twitch_players_ids = ''
+    for player in twitch_players:
+        twitch_players_ids += str(player.twitch_id) + ','
+    streams = []
+    twitch_streams = twitch_client.streams.get_live_streams(twitch_players_ids)
     for stream in twitch_streams:
         streams.append([
             stream.channel.display_name,

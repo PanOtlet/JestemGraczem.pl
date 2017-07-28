@@ -6,7 +6,6 @@ class Twitch(models.Model):
     name = models.CharField(max_length=23)
     twitch_id = models.IntegerField(null=True)
     add_date = models.DateTimeField('date published')
-    owner = models.ForeignKey(User)
     partner = models.BooleanField(default=False)
     banned = models.BooleanField(default=False)
 
@@ -14,7 +13,6 @@ class Twitch(models.Model):
 class Mixer(models.Model):
     name = models.CharField(max_length=23)
     add_date = models.DateTimeField('date published')
-    owner = models.ForeignKey(User)
     partner = models.BooleanField(default=False)
     banned = models.BooleanField(default=False)
 
@@ -22,9 +20,17 @@ class Mixer(models.Model):
 class YouTube(models.Model):
     name = models.CharField(max_length=50)
     add_date = models.DateTimeField('date published')
-    owner = models.ForeignKey(User)
     video_id = models.CharField(max_length=23)
 
     class Meta:
         verbose_name = 'Filmy na YouTube'
         verbose_name_plural = 'Filmy na YouTube'
+
+
+class ESportTwitch(models.Model):
+    name = models.CharField(max_length=23)
+    twitch_id = models.IntegerField()
+
+    class Meta:
+        verbose_name = 'Kanały eSport Twitch'
+        verbose_name_plural = 'Kanały eSport Twitch'
