@@ -50,7 +50,7 @@ def twitch(request, username):
 def stream_api(request):
     twitch_client = twitch_api()
     twitch_players = Twitch.objects.all().filter(banned=False)
-    twitch_players_ids = ''
+    twitch_players_ids = 'jestemgraczemtv,'
     for player in twitch_players:
         twitch_players_ids += str(player.twitch_id) + ','
     streams = []
