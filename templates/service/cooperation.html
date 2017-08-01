@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+    <div class="container">
+        <div class="card">
+            <div class="card-image">
+                <img src="{% static 'img/coop.jpg' %}">
+                <span class="card-title">Współpraca</span>
+            </div>
+            <div class="card-content">
+                <p>
+                    JestemGraczem.pl mogą być miejscem na Twoją reklamę, ale jednak pod kilkoma warunkami! Nie chcemy
+                    reklamować czegoś, czego sami byśmy nie chcieli mieć, czy oglądać. Chcemy, by reklama u nas była
+                    interesująca dla naszych użytkowników i nim zaczniemy coś promować - upewnimy się, czy to warte.
+                </p>
+                <h4>Czy możesz dołączyć do streamerów?</h4>
+                <p>
+                    Oczywiście! Więcej informacji znajdziesz w zakładce na górze strony (Dodaj stream)!
+                </p>
+                <h4>Czy możesz dodać swój film do zakładki YouTube?</h4>
+                <p>
+                    Oczywiście! Więcej informacji znajdziesz w zakładce na górze strony (Dodaj film)!
+                </p>
+                <h4>Pytania?</h4>
+                <p>
+                    Jeśli czegoś nie jest pewien/pewna to prosimy o kontakt :)
+                    Oficjalny adres: otlet@otlet.pl
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

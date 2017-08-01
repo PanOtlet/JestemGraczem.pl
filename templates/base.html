@@ -35,7 +35,10 @@
 </head>
 <body style="background: url({% static "img/mainbackground.jpg" %}) no-repeat center center fixed;">
 <!--[if lt IE 8]>
-                <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser.
+        Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
+    </p>
     <![endif]-->
 
 <nav class="black" role="navigation">
@@ -54,6 +57,11 @@
                 </a>
             </li>
             <li>
+                <a href="{% url 'service.cooperation' %}">
+                    <i class="fa fa-user-plus" aria-hidden="true"></i> Współpraca
+                </a>
+            </li>
+            <li>
                 <a href="https://forum.jestemgraczem.pl/topic/5-jak-doda%C4%87-stream-na-stron%C4%99-g%C5%82%C3%B3wn%C4%85/">
                     <i class="fa fa-plus" aria-hidden="true"></i> Dodaj stream
                 </a>
@@ -69,6 +77,11 @@
             <li>
                 <a href="https://forum.jestemgraczem.pl">
                     <i class="fa fa-comments" aria-hidden="true"></i> Forum
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'service.cooperation' %}">
+                    <i class="fa fa-user-plus" aria-hidden="true"></i> Współpraca
                 </a>
             </li>
             <li>
@@ -146,8 +159,8 @@
                         </a>
                     </li>
                     <li>
-                        <a class="white-text" href="javascript:alert('Jeszcze nie dzisiaj :)')">
-                            Zostań partnerem!
+                        <a class="white-text" href="{% url 'service.cooperation' %}">
+                            Współpraca
                         </a>
                     </li>
                 </ul>
@@ -163,7 +176,6 @@
         </div>
     </div>
 </footer>
-{#<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>#}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>

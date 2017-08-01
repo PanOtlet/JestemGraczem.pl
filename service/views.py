@@ -7,3 +7,7 @@ def index(request):
     return render(request, 'service/index.html', {
         'youtube': youtube
     })
+
+
+def cooperation(request):
+    return render(request, 'service/cooperation.html')
