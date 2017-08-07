@@ -5,6 +5,14 @@ var Stream = {
         mixer_url = mixer_url.replace("_/", '');
         this.template = '<a class="carousel-item hoverable" href="' + twitch_url + '{{ 0 }}">' +
             '<img class="responsive-img" src="{{ 3 }}" alt="{{ 0 }}"></a>';
+        this.templateESport = '<div class="col s12 m3">' + '<div class="card hoverable">' +
+            '<div class="card-image">' + '<a href="' + twitch_url + '{{ 0 }}">' +
+            '<img src="{{ 3 }}">' +
+            '<span class="card-title hide-on-med-and-down">' +
+            '<span class="new badge" data-badge-caption="na Twitch">{{ 0 }}</span>' +
+            '</span></a></div></div></div>';
+            // '<a class="carousel-item hoverable" href="' + twitch_url + '{{ 0 }}">' +
+            // '<img class="responsive-img" src="{{ 3 }}" alt="{{ 0 }}"></a>';
 
         $('.carousel.carousel-slider').carousel({fullWidth: true});
 
@@ -26,10 +34,8 @@ var Stream = {
     },
     generateESport: function (data, mixer_url, twitch_url) {
         for (var i = 0; i < data.length; i++) {
-            $(".esport-stream-container .carousel").append(Mustache.render(this.template, data[i]));
+            $(".esport-stream-container .esport-stream-row").append(Mustache.render(this.templateESport, data[i]));
             console.log(data[i]);
         }
-
-        $('.esport-stream-container .carousel').carousel();
     }
 };
