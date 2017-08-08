@@ -8,6 +8,8 @@ class Twitch(models.Model):
     add_date = models.DateTimeField('date published')
     partner = models.BooleanField(default=False)
     banned = models.BooleanField(default=False)
+    youtube_url = models.URLField(null=True)
+    facebook_url = models.URLField(null=True)
 
 
 class Mixer(models.Model):

@@ -7,7 +7,7 @@ from .models import Mixer, Twitch, ESportTwitch
 from rest_framework import viewsets
 from .serializers import TwitchSerializer, MixerSerializer
 from twitch import TwitchClient
-from django.http import JsonResponse, Http404
+from django.http import JsonResponse
 
 fake_community_id = 'ec04cef0-0e81-4fa9-a037-d11ac87051b6'  # Music
 community_id = 'ebcc2f09-2677-45f7-8d1f-2442551e6752'  # JestemGraczemPL
@@ -21,14 +21,43 @@ def index(request):
     return redirect(views.index)
 
 
+def streamer(request, username):
+    player = []
+    player.append(get_object_or_404(Twitch, name=username))
+    twitch_client = twitch_api()
+    player.append(twitch_client.channels.get_by_id(player[0].twitch_id))
+    return render(request, 'player/partner_page.html', {
+        'player': player
+    })
+
+
 def mixer(request, username):
     player = get_object_or_404(Mixer, name=username)
     return render(request, 'player/mixer.html', {'player': player})
 
 
 def twitch(request, username):
-    # player = get_object_or_404(Twitch, name=username)
+    try:
+        player = Twitch.objects.get(name=username)
+    except Twitch.DoesNotExist:
+        return render(request, 'player/twitch.html', {'player': username})
+
+    if player.partner is True:
+        return redirect('stream.streamer', username=player.name)
     return render(request, 'player/twitch.html', {'player': username})
+
+
+def multitwitch(request, username1=None, username2=None, username3=None, username4=None):
+    if request.method == 'POST':
+        if username1 is None and username2 is None:
+            return render(request, 'player/multi/form.html')
+        if username3 is None:
+            return render(request, 'player/multi/2.html', {
+                'username1': request.POST.get('username1'),
+                'username2': request.POST.get('username2'),
+                'chat': request.POST.get('chat')
+            })
+    return render(request, 'player/multi/form.html')
 
 
 def stream_api(request):
