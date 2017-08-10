@@ -19,6 +19,8 @@ from django.contrib.auth.models import User
 from rest_framework import routers, serializers, viewsets
 from stream.views import TwitchViewSet, MixerViewSet
 
+from service import views as services
+
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -42,3 +44,6 @@ urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^', include('service.urls'), name='service'),
 ]
+
+handler404 = services.page_not_found
+

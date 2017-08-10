@@ -1,6 +1,5 @@
 from django.conf.urls import url, include
 from django.views.decorators.cache import cache_page
-
 from . import views
 
 urlpatterns = [
