@@ -11,6 +11,10 @@ class Twitch(models.Model):
     youtube_url = models.URLField(null=True)
     facebook_url = models.URLField(null=True)
 
+    class Meta:
+        verbose_name = 'Kanały Twitch.tv'
+        verbose_name_plural = 'Kanały Twitch.tv'
+
 
 class Mixer(models.Model):
     name = models.CharField(max_length=23)
