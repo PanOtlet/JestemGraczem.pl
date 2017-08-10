@@ -8,8 +8,8 @@ class Twitch(models.Model):
     add_date = models.DateTimeField('date published')
     partner = models.BooleanField(default=False)
     banned = models.BooleanField(default=False)
-    youtube_url = models.URLField(null=True)
-    facebook_url = models.URLField(null=True)
+    youtube_url = models.URLField(null=True, blank=True)
+    facebook_url = models.URLField(null=True, blank=True)
 
     class Meta:
         verbose_name = 'Kanały Twitch.tv'
