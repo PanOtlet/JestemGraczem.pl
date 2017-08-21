@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import GamesServersList
 
-# Register your models here.
+
+@admin.register(GamesServersList)
+class GameServersListAdmin(admin.ModelAdmin):
+    list_display = ('name', 'official')

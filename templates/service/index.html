@@ -14,6 +14,9 @@
                 <li class="tab">
                     <a href="#youtube">YouTube</a>
                 </li>
+                <li class="tab">
+                    <a href="#gamesservers">Serwery gier</a>
+                </li>
                 {#                <li class="tab disabled">#}
                 {#                    <a href="#test3">#}
                 {#                        Konkursy <span class="new badge red" data-badge-caption="Wkrótce"></span>#}
@@ -29,7 +32,7 @@
 
     <div id="esport" class="esport-stream-container container-fluid">
         <div class="row esport-stream-row"></div>
-{#        <div class="carousel"></div>#}
+        {#        <div class="carousel"></div>#}
         <div class="container">
             <div class="row">
                 <div class="col s12 m12">
@@ -56,20 +59,45 @@
     </div>
 
     <div id="youtube" class="row">
-        {% for video in youtube %}
-            <div class="col s12 m3">
-                <div class="card hoverable">
-                    <div class="card-image">
-                        <a href="https://youtube.com/watch?v={{ video.video_id }}">
-                            <img src="https://img.youtube.com/vi/{{ video.video_id }}/maxresdefault.jpg">
-                            <span class="card-title hide-on-med-and-down">
+        <div class="container">
+            {% for video in youtube %}
+                <div class="col s12 m4">
+                    <div class="card hoverable">
+                        <div class="card-image">
+                            <a href="https://youtube.com/watch?v={{ video.video_id }}">
+                                <img src="https://img.youtube.com/vi/{{ video.video_id }}/maxresdefault.jpg">
+                                <span class="card-title hide-on-med-and-down">
                                 <span class="new badge" data-badge-caption="na YouTube">{{ video.name }}</span>
                             </span>
-                        </a>
+                            </a>
+                        </div>
                     </div>
                 </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div id="gamesservers" class="row">
+        <div class="container" style="margin-top: 1rem">
+            <div class="row">
+            {% for server in official_servers %}
+                <div class="col s12 m6">
+                    <div class="card">
+                        <div class="card-image">
+                            {% autoescape off %}{{ server.description }}{% endautoescape %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
             </div>
-        {% endfor %}
+        </div>
+        <div class="container" style="margin-top: 1rem">
+            {% for server in servers %}
+                <div class="col s12 m4">
+                    {% autoescape off %}{{ server.description }}{% endautoescape %}
+                </div>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}
 
