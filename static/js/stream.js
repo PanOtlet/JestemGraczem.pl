@@ -3,11 +3,11 @@ var Stream = {
     start: function (url, urlEsport, mixer_url, twitch_url) {
         twitch_url = twitch_url.replace("_/", '');
         mixer_url = mixer_url.replace("_/", '');
-        this.template = '<div class="col s12 m3">' + '<div class="card hoverable">' +
+        this.template = '<div class="col s12 m4 l3">' + '<div class="card hoverable">' +
             '<div class="card-image">' + '<a href="' + twitch_url + '{{ 1 }}">' +
             '<img src="{{ 3 }}">' +
             '<span class="card-title hide-on-med-and-down">' +
-            '<span class="new badge" data-badge-caption="na Twitch">{{ 0 }}</span>' +
+            '<span class="new badge red" data-badge-caption="">{{ 0 }}</span>' +
             '</span></a></div></div></div>';
 
         $.get(url, function (data, status) {
