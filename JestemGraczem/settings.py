@@ -7,7 +7,22 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-from config.config import DatabaseConfig, AdminConfig
+
+if 'TRAVIS' in os.environ:
+    class AdminConfig:
+        DEBUG_MODE = True
+        SECRET_KEY = 'ChuckTesta'
+
+
+    class DatabaseConfig:
+
+        DB_NAME = "travisci"
+        DB_USERNAME = "postgres"
+        DB_PASSWORD = ""
+        DB_HOST = "localhost"
+        DB_PORT = ""
+else:
+    from config.config import DatabaseConfig, AdminConfig
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
