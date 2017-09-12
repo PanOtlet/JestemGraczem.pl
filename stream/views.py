@@ -1,4 +1,6 @@
 from pprint import pprint
+import random
+
 
 from django.shortcuts import redirect, get_object_or_404, render
 from config.config import AdminConfig
@@ -63,13 +65,19 @@ def multitwitch(request, username1=None, username2=None, username3=None, usernam
 def stream_api(request):
     twitch_client = twitch_api()
     twitch_players = Twitch.objects.all().filter(banned=False)
+
     twitch_players_ids = 'jestemgraczemtv,'
     for player in twitch_players:
         twitch_players_ids += str(player.twitch_id) + ','
+
     streams = []
     twitch_streams = twitch_client.streams.get_live_streams(twitch_players_ids)
+
     if twitch_streams.__len__() == 0:
         twitch_streams = twitch_client.streams.get_live_streams(language='pl', limit=100)
+
+    random.shuffle(twitch_streams)
+
     for stream in twitch_streams:
         streams.append([
             stream.channel.display_name,
@@ -78,6 +86,7 @@ def stream_api(request):
             stream.preview["large"],
             stream.id
         ])
+
     return JsonResponse(streams, safe=False)
 
 
