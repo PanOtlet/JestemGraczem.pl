@@ -9,18 +9,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 
 if 'TRAVIS' in os.environ:
-    class AdminConfig:
-        DEBUG_MODE = True
-        SECRET_KEY = 'ChuckTesta'
-
-
-    class DatabaseConfig:
-
-        DB_NAME = "travisci"
-        DB_USERNAME = "postgres"
-        DB_PASSWORD = ""
-        DB_HOST = "localhost"
-        DB_PORT = ""
+    from config.travis import DatabaseConfig, AdminConfig
 else:
     from config.config import DatabaseConfig, AdminConfig
 
