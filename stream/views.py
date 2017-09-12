@@ -1,15 +1,19 @@
-from pprint import pprint
+import os
 import random
 
-
+from django.http import JsonResponse
 from django.shortcuts import redirect, get_object_or_404, render
-from config.config import AdminConfig
+from rest_framework import viewsets
+from twitch import TwitchClient
+
 from service import views
 from .models import Mixer, Twitch, ESportTwitch
-from rest_framework import viewsets
 from .serializers import TwitchSerializer, MixerSerializer
-from twitch import TwitchClient
-from django.http import JsonResponse
+
+if 'TRAVIS' in os.environ:
+    from config.travis import AdminConfig
+else:
+    from config.config import AdminConfig
 
 fake_community_id = 'ec04cef0-0e81-4fa9-a037-d11ac87051b6'  # Music
 community_id = 'ebcc2f09-2677-45f7-8d1f-2442551e6752'  # JestemGraczemPL
