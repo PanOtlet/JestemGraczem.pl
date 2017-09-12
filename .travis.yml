@@ -11,8 +11,8 @@ env:
   - DJANGO=1.11.5
 
 before_install:
-  - export DJANGO_SETTINGS_MODULE=your_project.settings
-  - export PYTHONPATH=$HOME/builds/your_github_username/your_repo
+  - export DJANGO_SETTINGS_MODULE=JestemGraczem.settings
+  - export PYTHONPATH=$HOME/builds/otlet/JestemGraczem.pl
   - export PIP_USE_MIRRORS=true
 
 install:
