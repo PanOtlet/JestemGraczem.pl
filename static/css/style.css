@@ -16,16 +16,10 @@ main {
     margin-top: 1rem;
 }
 
-/*
-    Carousel
- */
-.stream-container, .esport-stream-container {
-    padding-top: 2rem;
-}
-
-.carousel .carousel-item {
-    margin-top: 2rem;
-    display: none;
-    width: 640px;
-    height: 480px;
+.section-stream {
+    border-left: solid red 1rem;
+    color: white;
+    background: black;
+    margin: 3rem 10rem 0 10rem;
+    padding: 1rem;
 }
