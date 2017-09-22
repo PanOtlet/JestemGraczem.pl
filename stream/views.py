@@ -28,8 +28,7 @@ def index(request):
 
 
 def streamer(request, username):
-    player = []
-    player.append(get_object_or_404(Twitch, name=username))
+    player = [get_object_or_404(Twitch, name=username)]
     twitch_client = twitch_api()
     player.append(twitch_client.channels.get_by_id(player[0].twitch_id))
     return render(request, 'player/partner_page.html', {
@@ -53,19 +52,6 @@ def twitch(request, username):
     return render(request, 'player/twitch.html', {'player': username})
 
 
-def multitwitch(request, username1=None, username2=None, username3=None, username4=None):
-    if request.method == 'POST':
-        if username1 is None and username2 is None:
-            return render(request, 'player/multi/form.html')
-        if username3 is None:
-            return render(request, 'player/multi/2.html', {
-                'username1': request.POST.get('username1'),
-                'username2': request.POST.get('username2'),
-                'chat': request.POST.get('chat')
-            })
-    return render(request, 'player/multi/form.html')
-
-
 def stream_api(request):
     twitch_client = twitch_api()
     twitch_players = Twitch.objects.all().filter(banned=False)
@@ -75,12 +61,12 @@ def stream_api(request):
         twitch_players_ids += str(player.twitch_id) + ','
 
     streams = []
+
     twitch_streams = twitch_client.streams.get_live_streams(twitch_players_ids)
 
-    if twitch_streams.__len__() == 0:
-        twitch_streams = twitch_client.streams.get_live_streams(language='pl', limit=100)
-
-    random.shuffle(twitch_streams)
+    twitch_random_streams = twitch_client.streams.get_live_streams(language='pl', limit=100)
+    random.shuffle(twitch_random_streams)
+    twitch_streams = twitch_streams + twitch_random_streams
 
     for stream in twitch_streams:
         streams.append([

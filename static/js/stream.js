@@ -22,12 +22,14 @@ var Stream = {
         for (var i = 0; i < data.length; i++) {
             $(".stream-container-row").append(Mustache.render(this.template, data[i]));
         }
+        $("#stream_loading").remove();
     },
     generateESport: function (data, mixer_url, twitch_url) {
         if (data.length !== 0) {
             for (var i = 0; i < data.length; i++) {
                 $(".esport-stream-row").append(Mustache.render(this.template, data[i]));
             }
+            $("#esport_loading").remove();
         } else {
             $(".esport-stream-row").remove();
         }
