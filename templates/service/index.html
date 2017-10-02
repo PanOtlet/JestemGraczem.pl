@@ -110,7 +110,7 @@
     <script src="{% static "js/stream.js" %}"></script>
     <script>
         $(document).ready(function () {
-            Stream.start('{% url 'stream.live' %}', '{% url 'stream.live.esport' %}', '{% url 'stream.mixer' '_' %}', '{% url 'stream.twitch' '_' %}');
+            Stream.start('{% url 'stream.live' %}', '{% url 'stream.live.esport' %}', '{% url 'stream.mixer' '_' %}', '{% url 'stream.twitch' '_' %}', "{% static "img/placeholder.gif" %}");
         });
     </script>
 {% endblock %}

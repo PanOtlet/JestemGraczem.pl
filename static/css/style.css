@@ -29,3 +29,12 @@ main {
         display: none;
     }
 }
+
+img {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+img[data-src] {
+  opacity: 1;
+}
