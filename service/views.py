@@ -20,3 +20,11 @@ def cooperation(request):
 
 def page_not_found(request):
     return render(request, 'service/404.html', status=404)
+
+
+def login(request):
+    return None
+
+
+def logout(request):
+    return None
