@@ -31,10 +31,20 @@ main {
 }
 
 img {
-  opacity: 1;
-  transition: opacity 0.3s;
+    opacity: 1;
+    transition: opacity 0.3s;
 }
 
 img[data-src] {
-  opacity: 1;
+    opacity: 1;
+}
+
+#particle {
+    background-color: #1f1f1f;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -5;
 }

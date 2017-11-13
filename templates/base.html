@@ -33,14 +33,14 @@
     <meta name="msapplication-TileImage" content="{% static 'favicon/ms-icon-144x144.png' %}">
     <meta name="theme-color" content="#ffffff">
 </head>
-<body style="background: url({% static "img/mainbackground.jpg" %}) no-repeat center center fixed;">
+<body>
 <!--[if lt IE 8]>
     <p class="browserupgrade">
         You are using an <strong>outdated</strong> browser.
         Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
     </p>
     <![endif]-->
-
+<div id="particle"></div>
 <nav class="black" role="navigation">
     <div class="nav-wrapper container">
         <a id="logo-container" href="{% url 'index' %}" class="brand-logo tooltipped" data-position="bottom"
@@ -197,9 +197,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
 <script src="https://use.fontawesome.com/bd86b21063.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script src="{% static 'js/script.js' %}"></script>
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 <script>
-    $(".button-collapse").sideNav();
+    $(document).ready(function () {
+        $(".button-collapse").sideNav();
+        particlesJS("particle", particles_options);
+    });
 </script>
 {{ settings.0.variable|safe }}
 {% block javascripts %}{% endblock %}
