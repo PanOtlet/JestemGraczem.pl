@@ -48,13 +48,13 @@ var particles_options = {
         "line_linked": {
             "enable": true,
             "distance": 150,
-            "color": "#ffffff",
+            "color": "#fff",
             "opacity": 0.4,
             "width": 1
         },
         "move": {
             "enable": true,
-            "speed": 10,
+            "speed": 2,
             "direction": "none",
             "random": true,
             "straight": false,
