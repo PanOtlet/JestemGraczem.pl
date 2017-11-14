@@ -10,6 +10,9 @@ class GamesServersList(models.Model):
         verbose_name = 'Serwery gier'
         verbose_name_plural = 'Serwery gier'
 
+    def __str__(self):
+        return 'Serwery: ' + self.name
+
 
 class AppSettings(models.Model):
     name = models.CharField(max_length=23)
@@ -19,3 +22,6 @@ class AppSettings(models.Model):
     class Meta:
         verbose_name = 'Ustawienia'
         verbose_name_plural = 'Ustawienia'
+
+    def __str__(self):
+        return 'Ustawienia: ' + self.name

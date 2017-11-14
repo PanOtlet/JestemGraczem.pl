@@ -32,6 +32,7 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
+
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
 router.register(r'twitch', TwitchViewSet)
@@ -46,4 +47,3 @@ urlpatterns = [
 ]
 
 handler404 = services.page_not_found
-

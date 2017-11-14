@@ -15,12 +15,18 @@ class Twitch(models.Model):
         verbose_name = 'Kanały Twitch.tv'
         verbose_name_plural = 'Kanały Twitch.tv'
 
+    def __str__(self):
+        return 'Twitch: ' + self.name
+
 
 class Mixer(models.Model):
     name = models.CharField(max_length=23)
     add_date = models.DateTimeField('date published')
     partner = models.BooleanField(default=False)
     banned = models.BooleanField(default=False)
+
+    def __str__(self):
+        return 'Mixer: ' + self.name
 
 
 class YouTube(models.Model):
@@ -32,6 +38,9 @@ class YouTube(models.Model):
         verbose_name = 'Filmy na YouTube'
         verbose_name_plural = 'Filmy na YouTube'
 
+    def __str__(self):
+        return 'YouTube: ' + self.name
+
 
 class ESportTwitch(models.Model):
     name = models.CharField(max_length=23)
@@ -40,3 +49,6 @@ class ESportTwitch(models.Model):
     class Meta:
         verbose_name = 'Kanały eSport Twitch'
         verbose_name_plural = 'Kanały eSport Twitch'
+
+    def __str__(self):
+        return 'eSport Twitch: ' + self.name

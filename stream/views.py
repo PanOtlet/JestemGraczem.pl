@@ -15,9 +15,6 @@ if 'TRAVIS' in os.environ:
 else:
     from config.config import AdminConfig
 
-fake_community_id = 'ec04cef0-0e81-4fa9-a037-d11ac87051b6'  # Music
-community_id = 'ebcc2f09-2677-45f7-8d1f-2442551e6752'  # JestemGraczemPL
-
 
 def twitch_api():
     return TwitchClient(client_id=AdminConfig.TWITCH_API_KEY)
@@ -60,9 +57,19 @@ def stream_api(request):
     for player in twitch_players:
         twitch_players_ids += str(player.twitch_id) + ','
 
-    streams = []
+    streams = partner_stream = []
 
     twitch_streams = twitch_client.streams.get_live_streams(twitch_players_ids)
+
+    for stream in twitch_streams:
+        partner_stream.append([
+            stream.channel.display_name,
+            stream.channel.display_name.lower(),
+            stream.game,
+            stream.preview["large"],
+            stream.id,
+            True
+        ])
 
     twitch_random_streams = twitch_client.streams.get_live_streams(language='pl', limit=100)
     random.shuffle(twitch_random_streams)

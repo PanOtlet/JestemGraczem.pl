@@ -7,7 +7,7 @@ var Stream = {
             '<div class="card-image">' + '<a href="' + twitch_url + '{{ 1 }}">' +
             '<img data-src="{{ 3 }}" src="' + placeholder_image + '">' +
             '<span class="card-title hide-on-med-and-down">' +
-            '<span class="new badge red" data-badge-caption="">{{ 0 }}</span>' +
+            '<span class="new badge red" data-partner="{{ 5 }}" data-badge-caption="">{{ 0 }}</span>' +
             '</span></a></div></div></div>';
 
         $.get(url, function (data, status) {
@@ -44,6 +44,13 @@ var Stream = {
             img.onload = function () {
                 img.removeAttribute('data-src');
             };
+        });
+        [].forEach.call(document.querySelectorAll('span[data-partner]'), function (img) {
+            var partner = img.getAttribute('data-partner');
+            if (partner == "True"){
+                img.classList.add('green');
+                img.classList.remove('red');
+            }
         });
     }
 };
