@@ -39,15 +39,13 @@ var Stream = {
         }
     },
     lazyLoad: function () {
-        [].forEach.call(document.querySelectorAll('img[data-src]'), function (img) {
-            img.setAttribute('src', img.getAttribute('data-src'));
-            img.onload = function () {
-                img.removeAttribute('data-src');
-            };
-        });
+        var images = document.querySelectorAll('img[data-src]');
+        lazyload(images);
+
         [].forEach.call(document.querySelectorAll('span[data-partner]'), function (img) {
             var partner = img.getAttribute('data-partner');
-            if (partner == "True"){
+            if (partner === "True"){
+                console.log('dupa');
                 img.classList.add('green');
                 img.classList.remove('red');
             }
