@@ -14,7 +14,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.conf.urls import url, include
+from django.urls import path
+from django.conf.urls import include
 from django.contrib.auth.models import User
 from rest_framework import routers, serializers, viewsets
 from stream.views import TwitchViewSet, MixerViewSet
@@ -39,11 +40,11 @@ router.register(r'twitch', TwitchViewSet)
 router.register(r'mixer', MixerViewSet)
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^stream/', include('stream.urls'), name='stream'),
-    url(r'^api/', include(router.urls)),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^', include('service.urls'), name='service'),
+    path('admin/', admin.site.urls),
+    path('stream/', include('stream.urls'), name='stream'),
+    path('api/', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('', include('service.urls'), name='service'),
 ]
 
 handler404 = services.page_not_found
