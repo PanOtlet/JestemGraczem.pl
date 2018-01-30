@@ -1,13 +1,15 @@
-from django.conf.urls import url, include
+from django.urls import path, register_converter
 from django.views.decorators.cache import cache_page
-from . import views
+from . import views, url_converters
+
+register_converter(url_converters.Username, 'wacek')
 
 urlpatterns = [
-    url(r'^mixer/(?P<username>[a-zA-Z0-9_]+)/$', views.mixer, name='stream.mixer'),
-    url(r'^twitch/(?P<username>[a-zA-Z0-9_]+)/$', views.twitch, name='stream.twitch'),
-    url(r'^live/$', cache_page(60 * 1)(views.stream_api), name='stream.live'),
-    url(r'^live/esport$', cache_page(60 * 10)(views.esport_stream_api), name='stream.live.esport'),
-    url(r'^(?P<username>[a-zA-Z0-9_]+)/$', views.streamer, name='stream.streamer'),
+    path('mixer/<wacek:username>/', views.mixer, name='stream.mixer'),
+    path('twitch/<wacek:username>/', views.twitch, name='stream.twitch'),
+    path('live/', cache_page(60 * 1)(views.stream_api), name='stream.live'),
+    path('live/esport', cache_page(60 * 10)(views.esport_stream_api), name='stream.live.esport'),
+    path('<wacek:username>/', views.streamer, name='stream.streamer'),
     # url(r'^multitwitch/', include([
     #     url(r'^$', views.multitwitch, name="stream.multitwitch"),
     #     url(r'^(?P<username1>[a-zA-Z0-9_]+)/(?P<username2>[a-zA-Z0-9_]+)/$', views.multitwitch,
@@ -19,5 +21,5 @@ urlpatterns = [
     #         r'^(?P<username1>[a-zA-Z0-9_]+)/(?P<username2>[a-zA-Z0-9_]+)/(?P<username3>[a-zA-Z0-9_]+)/'
     #         r'(?P<username4>[a-zA-Z0-9_]+)/$',
     #         views.multitwitch, name='stream.multitwitch.user4')])),
-    url(r'^$', views.index, name='stream.index'),
+    path('', views.index, name='stream.index'),
 ]
