@@ -107,20 +107,18 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES = dj_database_url.config(conn_max_age=500)
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
-
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-STATICFILES_STORAGE = [
-    'whitenoise.storage.CompressedManifestStaticFilesStorage',
-]
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 CACHES = {
     'default': {
