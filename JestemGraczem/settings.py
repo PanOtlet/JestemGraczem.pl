@@ -107,7 +107,7 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-DATABASES = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(dj_database_url.config(conn_max_age=500))
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
