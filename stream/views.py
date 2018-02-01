@@ -10,14 +10,10 @@ from service import views
 from .models import Mixer, Twitch, ESportTwitch
 from .serializers import TwitchSerializer, MixerSerializer
 
-if 'TRAVIS' in os.environ:
-    from config.travis import AdminConfig
-else:
-    from config.config import AdminConfig
-
+from django.conf import settings
 
 def twitch_api():
-    return TwitchClient(client_id=AdminConfig.TWITCH_API_KEY)
+    return TwitchClient(client_id=settings.TWITCH_API_KEY)
 
 
 def index(request):
