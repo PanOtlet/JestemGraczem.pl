@@ -1,7 +1,7 @@
 import os
 import dj_database_url
 
-try
+try:
     from config.config import AdminConfig
     SECRET_KEY = AdminConfig.SECRET_KEY
     TWITCH_API_KEY = AdminConfig.TWITCH_API_KEY
