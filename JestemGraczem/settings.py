@@ -1,7 +1,7 @@
 import os
 import dj_database_url
 
-print(os.environ['HEROKU'])
+print(type(os.environ['HEROKU']))
 
 if os.environ['HEROKU'] is 'True':
     SECRET_KEY = os.environ['SECRET_KEY']
