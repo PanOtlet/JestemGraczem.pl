@@ -1,18 +1,18 @@
 import os
 import dj_database_url
 
-if os.environ['HEROKU'] == 'True':
-    print('READY')
-    SECRET_KEY = os.environ['SECRET_KEY']
-    TWITCH_API_KEY = os.environ['TWITCH_API_KEY']
-    YOUTUBE_API_KEY = os.environ['YOUTUBE_API_KEY']
-    DEBUG = False
-else:
+try
     from config.config import AdminConfig
     SECRET_KEY = AdminConfig.SECRET_KEY
     TWITCH_API_KEY = AdminConfig.TWITCH_API_KEY
     YOUTUBE_API_KEY = AdminConfig.YOUTUBE_API_KEY
     DEBUG = True
+except AttributeError:
+    print('READY')
+    SECRET_KEY = os.environ['SECRET_KEY']
+    TWITCH_API_KEY = os.environ['TWITCH_API_KEY']
+    YOUTUBE_API_KEY = os.environ['YOUTUBE_API_KEY']
+    DEBUG = False
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
