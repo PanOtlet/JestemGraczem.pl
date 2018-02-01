@@ -1,6 +1,8 @@
 import os
 import dj_database_url
 
+print(os.environ['HEROKU'])
+
 if os.environ['HEROKU'] is 'True':
     SECRET_KEY = os.environ['SECRET_KEY']
     TWITCH_API_KEY = os.environ['TWITCH_API_KEY']
