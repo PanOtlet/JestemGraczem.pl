@@ -2,6 +2,7 @@
 [![Updates](https://pyup.io/repos/github/otlet/JestemGraczem.pl/shield.svg?token=bce824c2-2d11-467b-9aac-dd6ffd1c46db)](https://pyup.io/repos/github/otlet/JestemGraczem.pl/)
 [![Python 3](https://pyup.io/repos/github/otlet/JestemGraczem.pl/python-3-shield.svg?token=bce824c2-2d11-467b-9aac-dd6ffd1c46db)](https://pyup.io/repos/github/otlet/JestemGraczem.pl/)
 [![Build Status](https://img.shields.io/travis/otlet/JestemGraczem.pl/master.svg?branch=master)](https://travis-ci.org/otlet/JestemGraczem.pl)
+[![CodeFactor](https://www.codefactor.io/repository/github/otlet/jestemgraczem.pl/badge)](https://www.codefactor.io/repository/github/otlet/jestemgraczem.pl)
 
 Streaming player and something more (probably). We love coffee.
 
@@ -13,7 +14,6 @@ Work in progress!
     * Python 3.6+
     * pip
     * VirtualEnv
-    * PostgreSQL
     * Patients
 * Installation:
     * `virtualenv ENV`
