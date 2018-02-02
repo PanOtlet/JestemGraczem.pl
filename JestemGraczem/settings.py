@@ -1,19 +1,19 @@
 import os
 import dj_database_url
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+
 SECRET_KEY = 'exampleSecretKey'
 TWITCH_API_KEY = 'Yourkey'
 YOUTUBE_API_KEY = 'Yourkey'
 DEBUG = True
 
-if os.environ['HEROKU'] == 'True':
+if not os.path.isfile(BASE_DIR + "/config/config.py"):
     SECRET_KEY = os.environ['SECRET_KEY']
     TWITCH_API_KEY = os.environ['TWITCH_API_KEY']
     YOUTUBE_API_KEY = os.environ['YOUTUBE_API_KEY']
     DEBUG = False
-
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 ALLOWED_HOSTS = [
     'jestemgraczem.pl',
