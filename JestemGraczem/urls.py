@@ -40,6 +40,7 @@ router.register(r'twitch', TwitchViewSet)
 router.register(r'mixer', MixerViewSet)
 
 urlpatterns = [
+    path('signup/', services.signup, name='signup'),
     path('admin/', admin.site.urls),
     path('stream/', include('stream.urls'), name='stream'),
     path('api/', include(router.urls)),
