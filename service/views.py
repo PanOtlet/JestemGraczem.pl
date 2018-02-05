@@ -1,4 +1,5 @@
 from stream.models import YouTube
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
@@ -37,11 +38,3 @@ def signup(request):
     else:
         form = UserCreationForm()
     return render(request, 'signup.html', {'form': form})
-
-
-def login(request):
-    return None
-
-
-def logout(request):
-    return None
