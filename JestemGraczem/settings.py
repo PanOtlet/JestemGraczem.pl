@@ -4,16 +4,17 @@ import dj_database_url
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-SECRET_KEY = 'exampleSecretKey'
-TWITCH_API_KEY = 'Yourkey'
-YOUTUBE_API_KEY = 'Yourkey'
-DEBUG = True
-
 if not os.path.isfile(BASE_DIR + "/config/config.py"):
     SECRET_KEY = os.environ['SECRET_KEY']
     TWITCH_API_KEY = os.environ['TWITCH_API_KEY']
     YOUTUBE_API_KEY = os.environ['YOUTUBE_API_KEY']
     DEBUG = False
+else:
+    from config.config import AdminConfig
+    SECRET_KEY = AdminConfig.SECRET_KEY
+    TWITCH_API_KEY = AdminConfig.TWITCH_API_KEY
+    YOUTUBE_API_KEY = AdminConfig.YOUTUBE_API_KEY
+    DEBUG = True
 
 ALLOWED_HOSTS = [
     'jestemgraczem.pl',
