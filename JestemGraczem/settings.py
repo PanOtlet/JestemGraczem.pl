@@ -18,6 +18,7 @@ if not os.path.isfile(BASE_DIR + "/config/config.py"):
 ALLOWED_HOSTS = [
     'jestemgraczem.pl',
     'localhost',
+    '127.0.0.1',
 ]
 
 ADMINS = [

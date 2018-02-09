@@ -12,6 +12,7 @@ from .serializers import TwitchSerializer, MixerSerializer
 
 from django.conf import settings
 
+
 def twitch_api():
     return TwitchClient(client_id=settings.TWITCH_API_KEY)
 
@@ -39,8 +40,9 @@ def twitch(request, username):
         player = Twitch.objects.get(name__icontains=username)
     except Twitch.DoesNotExist:
         return render(request, 'player/twitch.html', {'player': username})
-    if player.partner is True:
-        return redirect('stream.streamer', username=player.name)
+
+    # if player.partner is True:
+    #     return redirect('stream.streamer', username=player.name)
 
     return render(request, 'player/twitch.html', {'player': username})
 
@@ -67,9 +69,10 @@ def stream_api(request):
             True
         ])
 
-    twitch_random_streams = twitch_client.streams.get_live_streams(language='pl', limit=100)
-    random.shuffle(twitch_random_streams)
-    twitch_streams = twitch_streams + twitch_random_streams
+    if len(partner_stream) < 2:
+        twitch_random_streams = twitch_client.streams.get_live_streams(language='pl', limit=100)
+        random.shuffle(twitch_random_streams)
+        twitch_streams = twitch_streams + twitch_random_streams
 
     for stream in twitch_streams:
         streams.append([
