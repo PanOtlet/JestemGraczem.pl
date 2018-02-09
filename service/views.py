@@ -1,7 +1,7 @@
 from stream.models import YouTube
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import login, authenticate
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.shortcuts import render, redirect
 from .models import GamesServersList
 
@@ -25,16 +25,34 @@ def page_not_found(request):
     return render(request, 'service/404.html', status=404)
 
 
-def signup(request):
+def registration(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
+            raw_password = form.cleaned_data.get('password')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
             return redirect('home')
     else:
         form = UserCreationForm()
-    return render(request, 'service/signup.html', {'form': form})
+    return render(request, 'service/registration.html', {'form': form})
+
+
+def login_view(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return redirect('/website/profile/')
+    else:
+        form = AuthenticationForm()
+    return render(request, 'service/login.html', {'form': form})
+
+
+@login_required()
+def logout_view(request):
+    logout(request)
+    index(request)
