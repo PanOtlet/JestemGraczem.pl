@@ -36,15 +36,16 @@ def mixer(request, username):
 
 
 def twitch(request, username):
-    try:
-        player = Twitch.objects.get(name__icontains=username)
-    except Twitch.DoesNotExist:
-        return render(request, 'player/twitch.html', {'player': username})
+    return HttpResponseRedirect('https://twitch.tv/' + username)
+    #try:
+    #    player = Twitch.objects.get(name__icontains=username)
+    #except Twitch.DoesNotExist:
+    #    return render(request, 'player/twitch.html', {'player': username})
 
     # if player.partner is True:
     #     return redirect('stream.streamer', username=player.name)
 
-    return render(request, 'player/twitch.html', {'player': username})
+    #return render(request, 'player/twitch.html', {'player': username})
 
 
 def stream_api(request):
