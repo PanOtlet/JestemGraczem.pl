@@ -1,7 +1,7 @@
 import os
 import random
 
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseRedirect
 from django.shortcuts import redirect, get_object_or_404, render
 from rest_framework import viewsets
 from twitch import TwitchClient
