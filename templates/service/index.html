@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends 'base.html' %} {% load static %} {% block title %}Strona główna{% endblock %} {% block main %}
 <div class="black">
     <div class="container">
@@ -12,6 +13,39 @@
                 <a href="#gamesservers">Serwery gier</a>
             </li>
         </ul>
+=======
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Strona główna{% endblock %}
+
+{% block main %}
+    <div class="black">
+        <div class="container">
+            <ul class="tabs tabs-transparent">
+                <li class="tab">
+                    <a class="active" href="#livestream">
+                        <i class="fab fa-twitch"></i> Live Streams
+                    </a>
+                </li>
+                <li class="tab">
+                    <a href="#youtube">
+                        <i class="fab fa-youtube"></i> YouTube
+                    </a>
+                </li>
+                <li class="tab">
+                    <a href="#gamesservers">
+                        <i class="fas fa-server"></i> Serwery gier
+                    </a>
+                </li>
+                {#                <li class="tab disabled">#}
+                {#                    <a href="#test3">#}
+                {#                        Konkursy <span class="new badge red" data-badge-caption="Wkrótce"></span>#}
+                {#                    </a>#}
+                {#                </li>#}
+            </ul>
+        </div>
+>>>>>>> 7c60427a701cb5175b98bf063c7514ed50e43f3d
     </div>
 </div>
 
