@@ -4,7 +4,7 @@ var Stream = {
         twitch_url = twitch_url.replace("_/", '');
         mixer_url = mixer_url.replace("_/", '');
         this.template = '<div class="col s12 m4 l3">' + '<div class="card hoverable">' +
-            '<div class="card-image">' + '<a href="' + twitch_url + '{{ 1 }}">' +
+            '<div class="card-image">' + '<a id="{{ 1 }}" onclick="Stream.open_stream(this.id)" href="#">' +
             '<img data-src="{{ 3 }}" src="' + placeholder_image + '">' +
             '<span class="card-title hide-on-med-and-down">' +
             '<span class="new badge red" data-partner="{{ 5 }}" data-badge-caption="">{{ 0 }}</span>' +
@@ -50,5 +50,9 @@ var Stream = {
                 img.classList.remove('red');
             }
         });
+    },
+    open_stream: function (id){
+        $('#stream_url').attr("src", "https://player.twitch.tv/?channel=" + id);
+        $('#modal').modal('open');
     }
 };
