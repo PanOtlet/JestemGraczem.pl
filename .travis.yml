@@ -7,9 +7,6 @@ python:
 
 services: postgresql
 
-env:
-  - DJANGO=1.11.5
-
 before_install:
   - export DJANGO_SETTINGS_MODULE=JestemGraczem.settings
   - export PYTHONPATH=$HOME/builds/otlet/JestemGraczem.pl
@@ -17,8 +14,6 @@ before_install:
 
 install:
   - pip install -r requirements.txt
-  - pip install django==$DJANGO --quiet
-  - pip install psycopg2 --quiet
 
 before_script:
   - psql -c "CREATE DATABASE mydb;" -U postgres
@@ -26,3 +21,4 @@ before_script:
 script:
   - python manage.py migrate
   - python manage.py makemigrations
+  - python manage.py collectstatic
