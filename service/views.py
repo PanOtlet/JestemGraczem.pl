@@ -55,4 +55,4 @@ def login_view(request):
 @login_required()
 def logout_view(request):
     logout(request)
-    index(request)
+    return render(request, 'service/index.html')
