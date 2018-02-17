@@ -1,20 +1,10 @@
 import os
 import dj_database_url
+import urllib.parse
+import json
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-
-if not os.path.isfile(BASE_DIR + "/config/config.py"):
-    SECRET_KEY = os.environ['SECRET_KEY']
-    TWITCH_API_KEY = os.environ['TWITCH_API_KEY']
-    YOUTUBE_API_KEY = os.environ['YOUTUBE_API_KEY']
-    DEBUG = False
-else:
-    from config.config import AdminConfig
-    SECRET_KEY = AdminConfig.SECRET_KEY
-    TWITCH_API_KEY = AdminConfig.TWITCH_API_KEY
-    YOUTUBE_API_KEY = AdminConfig.YOUTUBE_API_KEY
-    DEBUG = True
 
 ALLOWED_HOSTS = [
     'jestemgraczem.pl',
@@ -48,6 +38,39 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+if not os.path.isfile(BASE_DIR + "/config/config.py"):
+    SECRET_KEY = os.environ['SECRET_KEY']
+    TWITCH_API_KEY = os.environ['TWITCH_API_KEY']
+    YOUTUBE_API_KEY = os.environ['YOUTUBE_API_KEY']
+    DEBUG = False
+    CACHES = {
+        'default': {
+            'BACKEND': 'django_bmemcached.memcached.BMemcached',
+            'LOCATION': os.environ.get('MEMCACHEDCLOUD_SERVERS').split(','),
+            'OPTIONS': {
+                'username': os.environ.get('MEMCACHEDCLOUD_USERNAME'),
+                'password': os.environ.get('MEMCACHEDCLOUD_PASSWORD')
+            }
+        }
+    }
+else:
+    from config.config import AdminConfig
+
+    SECRET_KEY = AdminConfig.SECRET_KEY
+    TWITCH_API_KEY = AdminConfig.TWITCH_API_KEY
+    YOUTUBE_API_KEY = AdminConfig.YOUTUBE_API_KEY
+    DEBUG = True
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+            'LOCATION': os.path.join(BASE_DIR, 'cache').replace('\\', '/'),
+            'TIMEOUT': 600,
+            'OPTIONS': {
+                'MAX_ENTRIES': 1000
+            }
+        }
+    }
 
 ROOT_URLCONF = 'JestemGraczem.urls'
 
@@ -122,14 +145,3 @@ STATICFILES_DIRS = (
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-        'LOCATION': os.path.join(BASE_DIR, 'cache').replace('\\', '/'),
-        'TIMEOUT': 600,
-        'OPTIONS': {
-            'MAX_ENTRIES': 1000
-        }
-    }
-}

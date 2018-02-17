@@ -3,7 +3,7 @@ from django.urls import reverse
 
 
 class ServiceIndexViewTests(TestCase):
-    def no_error(self):
-        url = reverse('service:index')
+    def test_no_error(self):
+        url = reverse('index')
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
