@@ -3,6 +3,7 @@ certifi==2018.1.18
 chardet==3.0.4
 dj-database-url==0.4.2
 Django==2.0.2
+django-bmemcached==0.2.3
 djangorestframework==3.7.7
 feedparser==5.2.1
 gunicorn==19.7.1
