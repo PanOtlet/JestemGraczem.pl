@@ -1,0 +1,12 @@
+/* TEAM */
+Title: Otlet.pl
+Site: otlet@otlet.pl
+Twitter: Pan Otlet
+Location: Wałcz and Poznań, Poland.
+
+/* THANKS */
+Name: PudzianKing
+Name: Kaczorek
+
+/* SITE */
+Standards: We don't have standards

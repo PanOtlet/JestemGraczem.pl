@@ -12,3 +12,13 @@ class ServiceIndexViewTests(TestCase):
         url = reverse('service.cooperation')
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
+
+    def test_signup200(self):
+        url = reverse('signup')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+
+    def test_login200(self):
+        url = reverse('login')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)

@@ -17,9 +17,9 @@ main {
 }
 
 .section-stream {
-    border-left: solid red 1rem;
+    border-left: solid #6a1b9a 1rem;
     color: white;
-    background: black;
+    background: #4a148c;
     margin: 2rem 10rem 0 10rem;
     padding: 1rem;
 }
@@ -39,8 +39,16 @@ img[data-src] {
     opacity: 1;
 }
 
+img.responsive-img.hoverable {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3rem;
+    padding: 0;
+}
+
 #particle {
-    background-color: #232323;
+    background-color: #000;
     position: fixed;
     top: 0;
     right: 0;

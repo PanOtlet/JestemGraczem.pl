@@ -8,13 +8,13 @@ var particles_options = {
             }
         },
         "color": {
-            "value": "#ff0000"
+            "value": "#6a1b9a"
         },
         "shape": {
             "type": "circle",
             "stroke": {
-                "width": 0,
-                "color": "#000000"
+                "width": 3,
+                "color": "#4a148c"
             },
             "polygon": {
                 "nb_sides": 5

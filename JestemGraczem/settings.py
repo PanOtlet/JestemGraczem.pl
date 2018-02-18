@@ -61,16 +61,16 @@ else:
     TWITCH_API_KEY = AdminConfig.TWITCH_API_KEY
     YOUTUBE_API_KEY = AdminConfig.YOUTUBE_API_KEY
     DEBUG = True
-    CACHES = {
-        'default': {
-            'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-            'LOCATION': os.path.join(BASE_DIR, 'cache').replace('\\', '/'),
-            'TIMEOUT': 600,
-            'OPTIONS': {
-                'MAX_ENTRIES': 1000
-            }
-        }
-    }
+    # CACHES = {
+    #     'default': {
+    #         'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+    #         'LOCATION': os.path.join(BASE_DIR, 'cache').replace('\\', '/'),
+    #         'TIMEOUT': 600,
+    #         'OPTIONS': {
+    #             'MAX_ENTRIES': 1000
+    #         }
+    #     }
+    # }
 
 ROOT_URLCONF = 'JestemGraczem.urls'
 
