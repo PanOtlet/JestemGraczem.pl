@@ -7,11 +7,24 @@ from .models import GamesServersList
 
 
 def index(request):
-    youtube = YouTube.objects.order_by('-id')[:20]
+    return render(request, 'service/index.html')
+
+
+def livestreams(request):
+    return render(request, 'player/livestream.html')
+
+
+def youtube(request):
+    yt = YouTube.objects.order_by('-id')[:20]
+    return render(request, 'player/youtube.html', {
+        'youtube': yt
+    })
+
+
+def gameservers(request):
     official_servers = GamesServersList.objects.filter(official=True)
     servers = GamesServersList.objects.filter(official=False)
-    return render(request, 'service/index.html', {
-        'youtube': youtube,
+    return render(request, 'player/gameservers.html', {
         'servers': servers,
         'official_servers': official_servers
     })
