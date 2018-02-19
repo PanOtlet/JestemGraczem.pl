@@ -52,7 +52,7 @@ def stream_api(request):
     twitch_client = twitch_api()
     twitch_players = Twitch.objects.all().filter(banned=False)
 
-    twitch_players_ids = 'jestemgraczemtv,'
+    twitch_players_ids = ''
     for player in twitch_players:
         twitch_players_ids += str(player.twitch_id) + ','
 
@@ -70,7 +70,7 @@ def stream_api(request):
             True
         ])
 
-    if len(partner_stream) < 2:
+    if len(partner_stream) < 1:
         twitch_random_streams = twitch_client.streams.get_live_streams(language='pl', limit=100)
         random.shuffle(twitch_random_streams)
         twitch_streams = twitch_streams + twitch_random_streams
