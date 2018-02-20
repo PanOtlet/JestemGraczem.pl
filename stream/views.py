@@ -1,8 +1,7 @@
-import os
 import random
 
-from django.http import JsonResponse, HttpResponseRedirect
-from django.shortcuts import redirect, get_object_or_404, render
+from django.http import JsonResponse
+from django.shortcuts import redirect
 from rest_framework import viewsets
 from twitch import TwitchClient
 
@@ -19,33 +18,6 @@ def twitch_api():
 
 def index(request):
     return redirect(views.index)
-
-
-def streamer(request, username):
-    player = [get_object_or_404(Twitch, name=username)]
-    twitch_client = twitch_api()
-    player.append(twitch_client.channels.get_by_id(player[0].twitch_id))
-    return render(request, 'player/partner_page.html', {
-        'player': player
-    })
-
-
-def mixer(request, username):
-    player = get_object_or_404(Mixer, name=username)
-    return render(request, 'player/mixer.html', {'player': player})
-
-
-def twitch(request, username):
-    return HttpResponseRedirect('https://twitch.tv/' + username)
-    #try:
-    #    player = Twitch.objects.get(name__icontains=username)
-    #except Twitch.DoesNotExist:
-    #    return render(request, 'player/twitch.html', {'player': username})
-
-    # if player.partner is True:
-    #     return redirect('stream.streamer', username=player.name)
-
-    #return render(request, 'player/twitch.html', {'player': username})
 
 
 def stream_api(request):
