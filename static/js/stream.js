@@ -7,7 +7,7 @@ var Stream = {
             '<div class="card-image">' + '<a id="{{ 1 }}" onclick="Stream.open_stream(this.id)" href="#">' +
             '<img data-src="{{ 3 }}" src="' + placeholder_image + '">' +
             '<span class="card-title hide-on-med-and-down">' +
-            '<span class="new badge red" data-partner="{{ 5 }}" data-badge-caption="">{{ 0 }}</span>' +
+            '<span class="new badge blue-gray" data-partner="{{ 5 }}" data-badge-caption="">{{ 0 }}</span>' +
             '</span></a></div></div></div>';
 
         $.get(url, function (data, status) {

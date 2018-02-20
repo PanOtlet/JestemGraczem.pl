@@ -22,3 +22,18 @@ class ServiceIndexViewTests(TestCase):
         url = reverse('login')
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
+
+    def test_livestream200(self):
+        url = reverse('livestreams')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+
+    def test_youtube200(self):
+        url = reverse('youtube')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+
+    def test_gameservers200(self):
+        url = reverse('gameservers')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
