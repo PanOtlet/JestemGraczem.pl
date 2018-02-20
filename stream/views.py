@@ -47,14 +47,14 @@ def stream_api(request):
         random.shuffle(twitch_random_streams)
         twitch_streams = twitch_streams + twitch_random_streams
 
-    for stream in twitch_streams:
-        streams.append([
-            stream.channel.display_name,
-            stream.channel.display_name.lower(),
-            stream.game,
-            stream.preview["large"],
-            stream.id
-        ])
+        for stream in twitch_streams:
+            streams.append([
+                stream.channel.display_name,
+                stream.channel.display_name.lower(),
+                stream.game,
+                stream.preview["large"],
+                stream.id
+            ])
 
     return JsonResponse(streams, safe=False)
 
