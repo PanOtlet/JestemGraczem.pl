@@ -1,8 +1,6 @@
 var Stream = {
     template: '',
-    start: function (url, urlEsport, mixer_url, twitch_url, placeholder_image) {
-        twitch_url = twitch_url.replace("_/", '');
-        mixer_url = mixer_url.replace("_/", '');
+    start: function (url, urlEsport, placeholder_image) {
         this.template = '<div class="col s12 m4 l3">' + '<div class="card hoverable">' +
             '<div class="card-image">' + '<a id="{{ 1 }}" onclick="Stream.open_stream(this.id)" href="#">' +
             '<img data-src="{{ 3 }}" src="' + placeholder_image + '">' +
@@ -11,11 +9,11 @@ var Stream = {
             '</span></a></div></div></div>';
 
         $.get(url, function (data, status) {
-            Stream.generate(data, mixer_url, twitch_url, placeholder_image);
+            Stream.generate(data, placeholder_image);
         });
 
         $.get(urlEsport, function (data, status) {
-            Stream.generateESport(data, mixer_url, twitch_url, placeholder_image);
+            Stream.generateESport(data, placeholder_image);
         });
 
         $(document).ajaxComplete(function () {
