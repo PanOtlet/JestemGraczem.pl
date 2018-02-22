@@ -1,6 +1,9 @@
 import random
 from pprint import pprint
 
+import requests
+from JestemGraczem.settings import TWITCH_API_KEY
+
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.utils.datetime_safe import datetime
@@ -9,7 +12,7 @@ from rest_framework import viewsets
 from twitch import TwitchClient
 
 from service import views
-from .forms import YouTubeForm
+from .forms import YouTubeForm, TwitchForm
 from .models import Mixer, Twitch, ESportTwitch, YouTube
 from .serializers import TwitchSerializer, MixerSerializer
 
@@ -51,6 +54,41 @@ def add_youtube(request):
     else:
         form = YouTubeForm()
     return render(request, 'service/youtube_form.html', {'form': form})
+
+
+def add_twitch(request):
+    if request.method == 'POST':
+        form = TwitchForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            try:
+                Twitch.objects.get(name=username)
+                return render(request, 'service/twitch_form.html', {
+                    'form': form,
+                    'info': [
+                        'red',
+                        'Streamer już jest w naszej bazie!'
+                    ]
+                })
+            except ObjectDoesNotExist:
+                url = 'https://api.twitch.tv/kraken/channels/' + username
+                headers = {
+                    'Accept': 'application/vnd.twitchtv.v3+json',
+                    'Client-ID': TWITCH_API_KEY
+                }
+                r = requests.post(url, headers=headers)
+                pprint(r.content)
+                # YouTube.objects.create(name=name, video_id=video_id, add_date=datetime.now(), accepted=False)
+                return render(request, 'service/twitch_form.html', {
+                    'form': form,
+                    'info': [
+                        'green',
+                        'Streamer został dodany! Oczekuje na akceptację'
+                    ]
+                })
+    else:
+        form = TwitchForm()
+    return render(request, 'service/twitch_form.html', {'form': form})
 
 
 def stream_api(request):

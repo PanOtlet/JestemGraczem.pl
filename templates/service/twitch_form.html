@@ -11,26 +11,15 @@
                     {% if info %}
                         <div class="card-panel {{ info.0 }}">{{ info.1 }}</div>
                     {% endif %}
-                    <form class="white" style="padding: 1rem" action="{% url 'add.youtube' %}"
+                    <form class="white" style="padding: 1rem" action="{% url 'add.twitch' %}"
                           method="post">
                         {% csrf_token %}
                         {{ form.non_field_errors }}
                         <div class="row">
                             <div class="input-field col s12">
-                                {{ form.name.errors }}
-                                <label for="{{ form.name.id_for_label }}">Tytuł</label>
-                                {{ form.name }}
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                {{ form.video_id.errors }}
-                                <label for="{{ form.video_id.id_for_label }}">ID filmu</label>
-                                {{ form.video_id }}
-                                <p>
-                                    ID filmu to końcówka z adresu, np.: https://www.youtube.com/watch?v=<span
-                                        class="red">oavMtUWDBTM</span>
-                                </p>
+                                {{ form.username.errors }}
+                                <label for="{{ form.username.id_for_label }}">Nazwa użytkownika na Twitch</label>
+                                {{ form.username }}
                             </div>
                         </div>
                         {{ form.captcha }}<br>
