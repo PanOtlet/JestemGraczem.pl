@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Dodaj film YouTube{% endblock %}
+
+{% block main %}
+    <div class="container mt3">
+        <div class="row" style="margin-top: 2rem">
+            <div class="col s12 l6 offset-l3">
+                <div class="card-panel white">
+                    {% if info %}
+                        <div class="card-panel {{ info.0 }}">{{ info.1 }}</div>
+                    {% endif %}
+                    <form class="white" style="padding: 1rem" action="{% url 'add.youtube' %}"
+                          method="post">
+                        {% csrf_token %}
+                        {{ form.non_field_errors }}
+                        <div class="row">
+                            <div class="input-field col s12">
+                                {{ form.name.errors }}
+                                <label for="{{ form.name.id_for_label }}">Tytuł</label>
+                                {{ form.name }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                {{ form.video_id.errors }}
+                                <label for="{{ form.video_id.id_for_label }}">ID filmu</label>
+                                {{ form.video_id }}
+                                <p>
+                                    ID filmu to końcówka z adresu, np.: https://www.youtube.com/watch?v=<span
+                                        class="red">oavMtUWDBTM</span>
+                                </p>
+                            </div>
+                        </div>
+                        {{ form.captcha }}<br>
+                        <input class="waves-effect waves-light purple btn" type="submit" value="Dodaj"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -8,6 +8,7 @@ class Twitch(models.Model):
     add_date = models.DateTimeField('date published')
     partner = models.BooleanField(default=False)
     banned = models.BooleanField(default=False)
+    accepted = models.BooleanField(default=False)
     youtube_url = models.URLField(null=True, blank=True)
     facebook_url = models.URLField(null=True, blank=True)
 
@@ -33,6 +34,7 @@ class YouTube(models.Model):
     name = models.CharField(max_length=50)
     add_date = models.DateTimeField('date published')
     video_id = models.CharField(max_length=23)
+    accepted = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = 'Filmy na YouTube'

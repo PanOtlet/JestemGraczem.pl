@@ -15,7 +15,7 @@ def livestreams(request):
 
 
 def youtube(request):
-    yt = YouTube.objects.order_by('-id')[:20]
+    yt = YouTube.objects.filter(accepted=True).order_by('-id')[:20]
     return render(request, 'player/youtube.html', {
         'youtube': yt
     })

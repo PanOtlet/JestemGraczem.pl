@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'captcha'
 ]
 
 MIDDLEWARE = [
@@ -43,6 +44,8 @@ if not os.path.isfile(BASE_DIR + "/config/config.py"):
     SECRET_KEY = os.environ['SECRET_KEY']
     TWITCH_API_KEY = os.environ['TWITCH_API_KEY']
     YOUTUBE_API_KEY = os.environ['YOUTUBE_API_KEY']
+    RECAPTCHA_PUBLIC_KEY = os.environ['RECAPTCHA_PUBLIC_KEY']
+    RECAPTCHA_PRIVATE_KEY = os.environ['RECAPTCHA_PRIVATE_KEY']
     DEBUG = False
     CACHES = {
         'default': {
@@ -71,6 +74,8 @@ else:
     #         }
     #     }
     # }
+
+NOCAPTCHA = True
 
 ROOT_URLCONF = 'JestemGraczem.urls'
 

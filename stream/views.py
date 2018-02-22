@@ -1,12 +1,16 @@
 import random
+from pprint import pprint
 
 from django.http import JsonResponse
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
+from django.utils.datetime_safe import datetime
+from django.core.exceptions import ObjectDoesNotExist
 from rest_framework import viewsets
 from twitch import TwitchClient
 
 from service import views
-from .models import Mixer, Twitch, ESportTwitch
+from .forms import YouTubeForm
+from .models import Mixer, Twitch, ESportTwitch, YouTube
 from .serializers import TwitchSerializer, MixerSerializer
 
 from django.conf import settings
@@ -20,9 +24,38 @@ def index(request):
     return redirect(views.index)
 
 
+def add_youtube(request):
+    if request.method == 'POST':
+        form = YouTubeForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            video_id = form.cleaned_data['video_id']
+            try:
+                YouTube.objects.get(video_id=video_id)
+                return render(request, 'service/youtube_form.html', {
+                    'form': form,
+                    'info': [
+                        'red',
+                        'Podany film już jest w naszej bazie!'
+                    ]
+                })
+            except ObjectDoesNotExist:
+                YouTube.objects.create(name=name, video_id=video_id, add_date=datetime.now(), accepted=False)
+                return render(request, 'service/youtube_form.html', {
+                    'form': form,
+                    'info': [
+                        'green',
+                        'Film został dodany! Oczekuje na akceptację'
+                    ]
+                })
+    else:
+        form = YouTubeForm()
+    return render(request, 'service/youtube_form.html', {'form': form})
+
+
 def stream_api(request):
     twitch_client = twitch_api()
-    twitch_players = Twitch.objects.all().filter(banned=False)
+    twitch_players = Twitch.objects.all().filter(banned=False, accepted=True)
 
     twitch_players_ids = ''
     for player in twitch_players:
