@@ -1,7 +1,8 @@
+import json
 import random
+import requests
 from pprint import pprint
 
-import requests
 from JestemGraczem.settings import TWITCH_API_KEY
 
 from django.http import JsonResponse
@@ -76,14 +77,23 @@ def add_twitch(request):
                     'Accept': 'application/vnd.twitchtv.v3+json',
                     'Client-ID': TWITCH_API_KEY
                 }
-                r = requests.post(url, headers=headers)
-                pprint(r.content)
-                # YouTube.objects.create(name=name, video_id=video_id, add_date=datetime.now(), accepted=False)
+                r = requests.get(url, headers=headers)
+                load = json.loads(r.text)
+                if not load['status']:
+                    Twitch.objects.create(name=load['name'], twitch_id=load['_id'], add_date=datetime.now(), accepted=False)
+                    return render(request, 'service/twitch_form.html', {
+                        'form': form,
+                        'info': [
+                            'green',
+                            'Streamer został dodany! Oczekuje na akceptację'
+                        ]
+                    })
+
                 return render(request, 'service/twitch_form.html', {
                     'form': form,
                     'info': [
-                        'green',
-                        'Streamer został dodany! Oczekuje na akceptację'
+                        'red',
+                        'Taki streamer nie istnieje!'
                     ]
                 })
     else:
