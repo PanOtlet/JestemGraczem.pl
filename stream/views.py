@@ -1,7 +1,6 @@
 import json
 import random
 import requests
-from pprint import pprint
 
 from JestemGraczem.settings import TWITCH_API_KEY
 
@@ -72,15 +71,15 @@ def add_twitch(request):
                     ]
                 })
             except ObjectDoesNotExist:
-                url = 'https://api.twitch.tv/kraken/channels/' + username
+                url = 'https://api.twitch.tv/kraken/users?login=' + username
                 headers = {
-                    'Accept': 'application/vnd.twitchtv.v3+json',
+                    'Accept': 'application/vnd.twitchtv.v5+json',
                     'Client-ID': TWITCH_API_KEY
                 }
                 r = requests.get(url, headers=headers)
                 load = json.loads(r.text)
-                if not load['status']:
-                    Twitch.objects.create(name=load['name'], twitch_id=load['_id'], add_date=datetime.now(), accepted=False)
+                if load['_total'] == 1:
+                    Twitch.objects.create(name=load['users'][0]['name'], twitch_id=load['users'][0]['_id'], add_date=datetime.now(), accepted=False)
                     return render(request, 'service/twitch_form.html', {
                         'form': form,
                         'info': [
@@ -88,12 +87,19 @@ def add_twitch(request):
                             'Streamer został dodany! Oczekuje na akceptację'
                         ]
                     })
-
+                elif load['_total'] == 0:
+                    return render(request, 'service/twitch_form.html', {
+                        'form': form,
+                        'info': [
+                            'red',
+                            'Taki streamer nie istnieje!'
+                        ]
+                    })
                 return render(request, 'service/twitch_form.html', {
                     'form': form,
                     'info': [
                         'red',
-                        'Taki streamer nie istnieje!'
+                        'Panie, ale mnie tutaj bez przecinków dawaj!'
                     ]
                 })
     else:
