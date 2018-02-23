@@ -8,6 +8,7 @@ from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.utils.datetime_safe import datetime
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.mail import send_mail
 from rest_framework import viewsets
 from twitch import TwitchClient
 
@@ -44,6 +45,13 @@ def add_youtube(request):
                 })
             except ObjectDoesNotExist:
                 YouTube.objects.create(name=name, video_id=video_id, add_date=datetime.now(), accepted=False)
+                send_mail(
+                    'Nowy film',
+                    'Dodano nowy film do bazy danych',
+                    'admin@jestemgraczem.pl',
+                    ['otlet@otlet.pl'],
+                    fail_silently=False,
+                )
                 return render(request, 'service/youtube_form.html', {
                     'form': form,
                     'info': [
@@ -80,6 +88,13 @@ def add_twitch(request):
                 load = json.loads(r.text)
                 if load['_total'] == 1:
                     Twitch.objects.create(name=load['users'][0]['name'], twitch_id=load['users'][0]['_id'], add_date=datetime.now(), accepted=False)
+                    send_mail(
+                        'Nowy streamer w bazie',
+                        'Ktoś właśnie dodał nowy stream w bazie!',
+                        'admin@jestemgraczem.pl',
+                        ['otlet@otlet.pl'],
+                        fail_silently=False,
+                    )
                     return render(request, 'service/twitch_form.html', {
                         'form': form,
                         'info': [

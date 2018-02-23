@@ -2,3 +2,8 @@ class AdminConfig:
     SECRET_KEY = ''
     TWITCH_API_KEY = ''
     YOUTUBE_API_KEY = ''
+    EMAIL_HOST = ''
+    EMAIL_HOST_PASSWORD = ''
+    EMAIL_HOST_USER = ''
+    EMAIL_PORT = ''
+    EMAIL_SUBJECT_PREFIX = '[JestemGraczem.pl]'

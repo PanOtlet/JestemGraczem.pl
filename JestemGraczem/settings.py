@@ -46,6 +46,11 @@ if not os.path.isfile(BASE_DIR + "/config/config.py"):
     YOUTUBE_API_KEY = os.environ['YOUTUBE_API_KEY']
     RECAPTCHA_PUBLIC_KEY = os.environ['RECAPTCHA_PUBLIC_KEY']
     RECAPTCHA_PRIVATE_KEY = os.environ['RECAPTCHA_PRIVATE_KEY']
+    EMAIL_HOST = os.environ['EMAIL_HOST']
+    EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
+    EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
+    EMAIL_PORT = os.environ['EMAIL_PORT']
+    EMAIL_SUBJECT_PREFIX = os.environ['EMAIL_SUBJECT_PREFIX']
     DEBUG = False
     CACHES = {
         'default': {
@@ -63,6 +68,11 @@ else:
     SECRET_KEY = AdminConfig.SECRET_KEY
     TWITCH_API_KEY = AdminConfig.TWITCH_API_KEY
     YOUTUBE_API_KEY = AdminConfig.YOUTUBE_API_KEY
+    EMAIL_HOST = AdminConfig.EMAIL_HOST
+    EMAIL_HOST_PASSWORD = AdminConfig.EMAIL_HOST_PASSWORD
+    EMAIL_HOST_USER = AdminConfig.EMAIL_HOST_USER
+    EMAIL_PORT = AdminConfig.EMAIL_PORT
+    EMAIL_SUBJECT_PREFIX = '[JestemGraczem.pl] '
     DEBUG = True
     # CACHES = {
     #     'default': {
