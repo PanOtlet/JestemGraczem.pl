@@ -141,7 +141,8 @@ def stream_api(request):
             stream.game,
             stream.preview["large"],
             stream.id,
-            True
+            stream.viewers,
+            stream.channel.description
         ])
 
     if len(partner_stream) < 1:
