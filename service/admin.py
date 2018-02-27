@@ -1,4 +1,5 @@
 from django.contrib import admin
+from JestemGraczem.widgets import HtmlEditor
 from .models import GamesServersList, AppSettings
 
 
@@ -10,3 +11,9 @@ class GameServersListAdmin(admin.ModelAdmin):
 @admin.register(AppSettings)
 class AppSettingsAdmin(admin.ModelAdmin):
     list_display = ('name', 'description')
+
+    class Meta:
+        fields = 'variable'
+        widgets = {
+            'code': HtmlEditor(attrs={'style': 'width: 90%; height: 100%;'}),
+        }
