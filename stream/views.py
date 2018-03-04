@@ -156,7 +156,9 @@ def stream_api(request):
                 stream.channel.display_name.lower(),
                 stream.game,
                 stream.preview["large"],
-                stream.id
+                stream.id,
+                stream.viewers,
+                stream.channel.description
             ])
 
     return JsonResponse(streams, safe=False)
