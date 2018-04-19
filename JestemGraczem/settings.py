@@ -10,6 +10,7 @@ ALLOWED_HOSTS = [
     'jestemgraczem.pl',
     'localhost',
     '127.0.0.1',
+    'jestemgraczem.herokuapp.com',
 ]
 
 ADMINS = [
