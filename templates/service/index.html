@@ -5,22 +5,21 @@
 
 {% block main %}
     {{ settings.1.variable|safe }}
-
     <div class="container-fluid">
         <div class="row">
             <div class="col m4">
                 <a href="{% url 'livestreams' %}">
-                    <img class="card-panel responsive-img hoverable" src="{% static 'img/livestreams.png' %}">
+                    <img class="responsive-img hoverable" src="{% static 'img/livestreams_menu.png' %}">
                 </a>
             </div>
             <div class="col m4">
                 <a href="{% url 'youtube' %}">
-                    <img class="card-panel responsive-img hoverable" src="{% static 'img/youtube.png' %}">
+                    <img class="responsive-img hoverable" src="{% static 'img/youtube_menu.png' %}">
                 </a>
             </div>
             <div class="col m4">
                 <a href="{% url 'gameservers' %}">
-                    <img class="card-panel responsive-img hoverable" src="{% static 'img/serwery.png' %}">
+                    <img class="responsive-img hoverable" src="{% static 'img/serwery_menu.png' %}">
                 </a>
             </div>
         </div>
