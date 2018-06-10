@@ -1,3 +1,5 @@
+from pprint import pprint
+
 from stream.models import YouTube
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout, authenticate
@@ -7,7 +9,11 @@ from .models import GamesServersList
 
 
 def index(request):
-    return render(request, 'service/index.html')
+    yt = YouTube.objects.filter(accepted=True).order_by('-id')[:3]
+    pprint(yt)
+    return render(request, 'service/index.html', {
+        'youtube': yt
+    })
 
 
 def livestreams(request):
