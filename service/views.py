@@ -9,9 +9,9 @@ from .models import GamesServersList
 
 
 def index(request):
-    yt = YouTube.objects.filter(accepted=True).order_by('-id')[:3]
+    yt = YouTube.objects.filter(accepted=True).order_by('-id')[:4]
     pprint(yt)
-    return render(request, 'service/index.html', {
+    return render(request, 'service/index_kwicks.html', {
         'youtube': yt
     })
 
