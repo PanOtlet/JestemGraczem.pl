@@ -28,7 +28,7 @@ class AppSettings(models.Model):
 
 
 class LinkBlog(models.Model):
-    title = models.CharField('Tytuł', max_length=23)
+    title = models.CharField('Tytuł', max_length=40)
     url = models.URLField('URL')
     description = models.TextField('Opis', null=True)
     image = models.URLField('Miniatura', null=True)
