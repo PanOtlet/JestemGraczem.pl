@@ -1,0 +1,32 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+blinker = "==1.4"
+certifi = "==2018.4.16"
+chardet = "==3.0.4"
+dj-database-url = "==0.5.0"
+django-bmemcached = "==0.2.3"
+django-recaptcha = "==1.4.0"
+djangorestframework = "==3.8.2"
+feedparser = "==5.2.1"
+gunicorn = "==19.8.1"
+idna = "==2.7"
+"psycopg2-binary" = "==2.7.5"
+python-binary-memcached = "==0.26.1"
+python-twitch-client = "==0.5.1"
+pytz = "==2018.4"
+requests = "==2.19.1"
+simplejson = "==3.15.0"
+six = "==1.11.0"
+"ts3" = "==1.0.6"
+"urllib3" = "==1.23"
+whitenoise = "==3.3.1"
+Django = "==2.0.6"
+
+[dev-packages]
+
+[requires]
+python_version = "3.6"

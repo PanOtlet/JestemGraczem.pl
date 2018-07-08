@@ -5,14 +5,15 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.shortcuts import render, redirect
-from .models import GamesServersList
+from .models import GamesServersList, LinkBlog
 
 
 def index(request):
-    yt = YouTube.objects.filter(accepted=True).order_by('-id')[:4]
-    pprint(yt)
+    yt = YouTube.objects.filter(accepted=True).order_by('-id')[:2]
+    ptr = LinkBlog.objects.filter(accepted=True).order_by('-id')[:10]
     return render(request, 'service/index_kwicks.html', {
-        'youtube': yt
+        'youtube': yt,
+        'ptr': ptr
     })
 
 

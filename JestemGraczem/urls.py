@@ -18,7 +18,7 @@ from django.urls import path
 from django.conf.urls import include
 from django.contrib.auth.models import User
 from rest_framework import routers, serializers, viewsets
-from stream.views import TwitchViewSet, MixerViewSet
+from stream.views import TwitchViewSet
 
 from service import views as services
 
@@ -37,7 +37,6 @@ class UserViewSet(viewsets.ModelViewSet):
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
 router.register(r'twitch', TwitchViewSet)
-router.register(r'mixer', MixerViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -47,4 +46,4 @@ urlpatterns = [
     path('', include('service.urls'), name='service'),
 ]
 
-#handler404 = services.page_not_found
+handler404 = services.page_not_found

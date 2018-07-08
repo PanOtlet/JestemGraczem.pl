@@ -14,7 +14,7 @@
     <meta name="author" content="Otlet.pl">
     <meta name="robots" content="index, follow">
     <meta name="revisit-after" content="3 days">
-    <link type="text/plain" rel="author" href="./static/humans.txt" />
+    <link type="text/plain" rel="author" href="./static/humans.txt"/>
 
     <link rel="apple-touch-icon" sizes="57x57" href="{% static 'favicon/apple-icon-57x57.png' %}">
     <link rel="apple-touch-icon" sizes="60x60" href="{% static 'favicon/apple-icon-60x60.png' %}">
@@ -53,8 +53,8 @@
         </a>
         <ul class="right hide-on-med-and-down">
             <li>
-                <a href="https://www.reddit.com/r/jestemgraczem/">
-                    <i class="fab fa-reddit"></i> Reddit
+                <a href="https://sekta.otlet.pl">
+                    <i class="fas fa-comments"></i> Forum
                 </a>
             </li>
             <li>
@@ -81,8 +81,8 @@
 
         <ul class="side-nav" id="nav-mobile">
             <li>
-                <a href="https://www.reddit.com/r/jestemgraczem/">
-                    <i class="fa fa-comments"></i> Forum
+                <a href="https://sekta.otlet.pl">
+                    <i class="fas fa-comments"></i> Forum
                 </a>
             </li>
             <li>
@@ -109,9 +109,9 @@
     </div>
 </nav>
 {% block body %}
-<main>
-    {% block main %}{% endblock %}
-</main>
+    <main>
+        {% block main %}{% endblock %}
+    </main>
 {% endblock %}
 <footer class="page-footer purple darken-4">
     <div class="container">
@@ -157,7 +157,8 @@
                         </a>
                     </li>
                     <li>
-                        <a class="white-text" href="https://github.com/otlet/JestemGraczem.pl/blob/master/POLICY-PRIVACY.md">
+                        <a class="white-text"
+                           href="https://github.com/otlet/JestemGraczem.pl/blob/master/POLICY-PRIVACY.md">
                             Polityka prywatności
                         </a>
                     </li>
@@ -190,7 +191,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 {#<script src="https://use.fontawesome.com/bd86b21063.js"></script>#}
-<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+      integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 <script src="{% static 'js/script.js' %}"></script>
 <link rel="stylesheet" href="{% static 'css/style.css' %}">

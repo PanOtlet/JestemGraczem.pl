@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Twitch, Mixer
+from .models import Twitch
 
 
 class TwitchSerializer(serializers.HyperlinkedModelSerializer):
@@ -7,10 +7,4 @@ class TwitchSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Twitch
-        fields = ('id', 'name', 'add_date', 'partner', 'banned', 'owner_id')
-
-
-class MixerSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Mixer
         fields = ('id', 'name', 'add_date', 'partner', 'banned', 'owner_id')

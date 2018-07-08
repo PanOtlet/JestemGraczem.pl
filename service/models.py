@@ -25,3 +25,20 @@ class AppSettings(models.Model):
 
     def __str__(self):
         return 'Ustawienia: ' + self.name
+
+
+class LinkBlog(models.Model):
+    title = models.CharField('Tytuł', max_length=23)
+    url = models.URLField('URL')
+    description = models.TextField('Opis', null=True)
+    image = models.URLField('Miniatura', null=True)
+    accepted = models.BooleanField('Opublikowany', default=False)
+    sponsored = models.BooleanField('Artykuł sponsorowany', default=False)
+    iframe = models.BooleanField('Ramka', default=True)
+
+    class Meta:
+        verbose_name = 'LinkBlog'
+        verbose_name_plural = 'LinkBlog'
+
+    def __str__(self):
+        return 'LinkBlog: ' + self.title

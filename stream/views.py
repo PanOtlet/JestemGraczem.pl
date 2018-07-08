@@ -14,8 +14,8 @@ from twitch import TwitchClient
 
 from service import views
 from .forms import YouTubeForm, TwitchForm
-from .models import Mixer, Twitch, ESportTwitch, YouTube
-from .serializers import TwitchSerializer, MixerSerializer
+from .models import Twitch, ESportTwitch, YouTube
+from .serializers import TwitchSerializer
 
 from django.conf import settings
 
@@ -87,7 +87,8 @@ def add_twitch(request):
                 r = requests.get(url, headers=headers)
                 load = json.loads(r.text)
                 if load['_total'] == 1:
-                    Twitch.objects.create(name=load['users'][0]['name'], twitch_id=load['users'][0]['_id'], add_date=datetime.now(), accepted=False)
+                    Twitch.objects.create(name=load['users'][0]['name'], twitch_id=load['users'][0]['_id'],
+                                          add_date=datetime.now(), accepted=False)
                     send_mail(
                         'Nowy streamer w bazie',
                         'Ktoś właśnie dodał nowy stream w bazie!',
@@ -132,7 +133,8 @@ def stream_api(request):
 
     streams = partner_stream = []
 
-    twitch_streams = twitch_client.streams.get_live_streams(twitch_players_ids)
+    if not twitch_players_ids is '':
+        twitch_streams = twitch_client.streams.get_live_streams(twitch_players_ids)
 
     for stream in twitch_streams:
         partner_stream.append([
@@ -171,7 +173,8 @@ def esport_stream_api(request):
     for player in twitch_players:
         twitch_players_ids += str(player.twitch_id) + ','
     streams = []
-    twitch_streams = twitch_client.streams.get_live_streams(twitch_players_ids)
+    if not twitch_players_ids is '':
+        twitch_streams = twitch_client.streams.get_live_streams(twitch_players_ids)
     for stream in twitch_streams:
         streams.append([
             stream.channel.display_name,
@@ -186,8 +189,3 @@ def esport_stream_api(request):
 class TwitchViewSet(viewsets.ModelViewSet):
     queryset = Twitch.objects.all().order_by('-partner')
     serializer_class = TwitchSerializer
-
-
-class MixerViewSet(viewsets.ModelViewSet):
-    queryset = Mixer.objects.all().order_by('-partner')
-    serializer_class = MixerSerializer

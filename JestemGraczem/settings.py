@@ -75,16 +75,11 @@ else:
     EMAIL_PORT = AdminConfig.EMAIL_PORT
     EMAIL_SUBJECT_PREFIX = '[JestemGraczem.pl] '
     DEBUG = True
-    # CACHES = {
-    #     'default': {
-    #         'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-    #         'LOCATION': os.path.join(BASE_DIR, 'cache').replace('\\', '/'),
-    #         'TIMEOUT': 600,
-    #         'OPTIONS': {
-    #             'MAX_ENTRIES': 1000
-    #         }
-    #     }
-    # }
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+        }
+    }
 
 NOCAPTCHA = True
 

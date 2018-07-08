@@ -31,52 +31,23 @@
             </div>
         </div>
     </div>
-    {#    <div class="container-fluid">#}
-    {#        <div class="row">#}
-    {#            <div class="col m4">#}
-    {#                <a href="{% url 'livestreams' %}">#}
-    {#                    <img class="responsive-img hoverable" src="{% static 'img/livestreams_menu.png' %}">#}
-    {#                </a>#}
-    {#            </div>#}
-    {#            <div class="col m4">#}
-    {#                <a href="{% url 'youtube' %}">#}
-    {#                    <img class="responsive-img hoverable" src="{% static 'img/youtube_menu.png' %}">#}
-    {#                </a>#}
-    {#            </div>#}
-    {#            <div class="col m4">#}
-    {#                <a href="{% url 'gameservers' %}">#}
-    {#                    <img class="responsive-img hoverable" src="{% static 'img/serwery_menu.png' %}">#}
-    {#                </a>#}
-    {#            </div>#}
-    {#        </div>#}
-    {#    </div>#}
     <div class="container-fluid">
         <div class="row">
-            <ul class='kwicks kwicks-horizontal'>
-                <li id='panel-1'>
+            <div class="col m4">
+                <a href="{% url 'livestreams' %}">
+                    <img class="responsive-img hoverable" src="{% static 'img/livestreams_menu.png' %}">
+                </a>
+            </div>
+            <div class="col m4">
+                <a href="{% url 'youtube' %}">
+                    <img class="responsive-img hoverable" src="{% static 'img/youtube_menu.png' %}">
+                </a>
+            </div>
+            <div class="col m4">
+                <a href="{% url 'gameservers' %}">
                     <img class="responsive-img hoverable" src="{% static 'img/serwery_menu.png' %}">
-                </li>
-                <li id='panel-2'>
-                    <img class="responsive-img hoverable" src="{% static 'img/serwery_menu.png' %}">
-                </li>
-                <li id='panel-2'>
-                    <img class="responsive-img hoverable" src="{% static 'img/serwery_menu.png' %}">
-                </li>
-            </ul>
+                </a>
+            </div>
         </div>
     </div>
-{% endblock %}
-
-{% block javascripts %}
-    <link rel='stylesheet' type='text/css' href='{% static 'css/jquery.kwicks.min.css' %}'/>
-    <script src='{% static 'js/jquery.kwicks.min.js' %}' type='text/javascript'></script>
-
-    <script type='text/javascript'>
-        $().ready(function () {
-            $('.kwicks').kwicks({
-                maxSize: '75%',
-                behavior: 'menu'
-            });
-        });
-    </script>
 {% endblock %}
