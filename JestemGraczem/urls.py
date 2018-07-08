@@ -46,4 +46,4 @@ urlpatterns = [
     path('', include('service.urls'), name='service'),
 ]
 
-handler404 = 'service.page_not_found'
+#handler404 = 'service.page_not_found'
