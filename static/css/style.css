@@ -66,3 +66,35 @@ span.badge.blue-gray {
     border-radius: 1rem;
     padding: 1rem;
 }
+
+#net23 {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #040404;
+}
+
+#net23 li {
+    float: left;
+}
+
+#net23 li a {
+    display: block;
+    color: #999999;
+    text-align: center;
+    padding: 0.3rem 0.3rem;
+    text-decoration: none;
+}
+
+#net23 .net23 {
+    cursor: default;
+}
+
+#net23 li a:hover {
+    color: #cccccc;
+}
+
+#net23 li .net23:hover {
+    color: white;
+}
