@@ -46,7 +46,7 @@ def add_youtube(request):
             except ObjectDoesNotExist:
                 YouTube.objects.create(name=name, video_id=video_id, add_date=datetime.now(), accepted=False)
                 send_mail(
-                    'Nowy film',
+                    'Nowy film: ' + name,
                     'Dodano nowy film do bazy danych',
                     'admin@jestemgraczem.pl',
                     ['otlet@otlet.pl'],
@@ -90,7 +90,7 @@ def add_twitch(request):
                     Twitch.objects.create(name=load['users'][0]['name'], twitch_id=load['users'][0]['_id'],
                                           add_date=datetime.now(), accepted=False)
                     send_mail(
-                        'Nowy streamer w bazie',
+                        'Nowy streamer w bazie:' + load['users'][0]['name'],
                         'Ktoś właśnie dodał nowy stream w bazie!',
                         'admin@jestemgraczem.pl',
                         ['otlet@otlet.pl'],
