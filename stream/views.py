@@ -133,8 +133,10 @@ def stream_api(request):
 
     streams = partner_stream = []
 
-    if not twitch_players_ids is '':
+    if twitch_players_ids is not '':
         twitch_streams = twitch_client.streams.get_live_streams(twitch_players_ids)
+    else:
+        twitch_streams = {}
 
     for stream in twitch_streams:
         partner_stream.append([
@@ -173,8 +175,32 @@ def esport_stream_api(request):
     for player in twitch_players:
         twitch_players_ids += str(player.twitch_id) + ','
     streams = []
-    if not twitch_players_ids is '':
+    if twitch_players_ids is not '':
         twitch_streams = twitch_client.streams.get_live_streams(twitch_players_ids)
+    else:
+        twitch_streams = {}
+    for stream in twitch_streams:
+        streams.append([
+            stream.channel.display_name,
+            stream.channel.display_name.lower(),
+            stream.game,
+            stream.preview["large"],
+            stream.id
+        ])
+    return JsonResponse(streams, safe=False)
+
+
+def partner_stream_api(request):
+    twitch_client = twitch_api()
+    twitch_players = Twitch.objects.all().filter(partner=True)
+    twitch_players_ids = ''
+    for player in twitch_players:
+        twitch_players_ids += str(player.twitch_id) + ','
+    streams = []
+    if twitch_players_ids is not '':
+        twitch_streams = twitch_client.streams.get_live_streams(twitch_players_ids)
+    else:
+        return esport_stream_api(request)
     for stream in twitch_streams:
         streams.append([
             stream.channel.display_name,

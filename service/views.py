@@ -10,8 +10,8 @@ from .models import GamesServersList, LinkBlog
 
 def index(request):
     yt = YouTube.objects.filter(accepted=True).order_by('-id')[:2]
-    ptr = LinkBlog.objects.filter(accepted=True).order_by('-id')[:10]
-    return render(request, 'service/index_kwicks.html', {
+    ptr = LinkBlog.objects.filter(accepted=True).order_by('-id')[:4]
+    return render(request, 'service/index.html', {
         'youtube': yt,
         'ptr': ptr
     })
@@ -75,4 +75,4 @@ def login_view(request):
 @login_required()
 def logout_view(request):
     logout(request)
-    return render(request, 'service/index.html')
+    return render(request, 'service/index_old.html')
