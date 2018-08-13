@@ -124,32 +124,45 @@ def add_twitch(request):
 
 
 def stream_api(request):
-    twitch_client = twitch_api()
     twitch_players = Twitch.objects.all().filter(banned=False, accepted=True)
+    streams = get_twitch(twitch_players)
+    return JsonResponse(streams, safe=False)
+
+
+def esport_stream_api(request):
+    twitch_players = ESportTwitch.objects.all()
+    streams = get_twitch(twitch_players, False)
+    return JsonResponse(streams, safe=False)
+
+
+def partner_stream_api(request):
+    twitch_players = Twitch.objects.all().filter(partner=True)
+    streams = get_twitch(twitch_players)
+    return JsonResponse(streams, safe=False)
+
+
+def get_twitch(twitch_players, generate_if_empty=True):
+    twitch_client = twitch_api()
 
     twitch_players_ids = ''
     for player in twitch_players:
         twitch_players_ids += str(player.twitch_id) + ','
 
-    streams = partner_stream = []
-
     if twitch_players_ids is not '':
         twitch_streams = twitch_client.streams.get_live_streams(twitch_players_ids)
     else:
-        twitch_streams = {}
-
+        twitch_streams = []
+    streams = []
     for stream in twitch_streams:
-        partner_stream.append([
+        streams.append([
             stream.channel.display_name,
             stream.channel.display_name.lower(),
             stream.game,
             stream.preview["large"],
-            stream.id,
-            stream.viewers,
-            stream.channel.description
+            stream.id
         ])
 
-    if len(partner_stream) < 1:
+    if len(streams) < 1 and generate_if_empty:
         twitch_random_streams = twitch_client.streams.get_live_streams(language='pl', limit=100)
         random.shuffle(twitch_random_streams)
         twitch_streams = twitch_streams + twitch_random_streams
@@ -164,52 +177,7 @@ def stream_api(request):
                 stream.viewers,
                 stream.channel.description
             ])
-
-    return JsonResponse(streams, safe=False)
-
-
-def esport_stream_api(request):
-    twitch_client = twitch_api()
-    twitch_players = ESportTwitch.objects.all()
-    twitch_players_ids = ''
-    for player in twitch_players:
-        twitch_players_ids += str(player.twitch_id) + ','
-    streams = []
-    if twitch_players_ids is not '':
-        twitch_streams = twitch_client.streams.get_live_streams(twitch_players_ids)
-    else:
-        twitch_streams = {}
-    for stream in twitch_streams:
-        streams.append([
-            stream.channel.display_name,
-            stream.channel.display_name.lower(),
-            stream.game,
-            stream.preview["large"],
-            stream.id
-        ])
-    return JsonResponse(streams, safe=False)
-
-
-def partner_stream_api(request):
-    twitch_client = twitch_api()
-    twitch_players = Twitch.objects.all().filter(partner=True)
-    twitch_players_ids = ''
-    for player in twitch_players:
-        twitch_players_ids += str(player.twitch_id) + ','
-    streams = []
-    if twitch_players_ids is not '':
-        twitch_streams = twitch_client.streams.get_live_streams(twitch_players_ids)
-    else:
-        return esport_stream_api(request)
-    for stream in twitch_streams:
-        streams.append([
-            stream.channel.display_name,
-            stream.channel.display_name.lower(),
-            stream.game,
-            stream.preview["large"],
-            stream.id
-        ])
-    return JsonResponse(streams, safe=False)
+    return streams
 
 
 class TwitchViewSet(viewsets.ModelViewSet):

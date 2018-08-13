@@ -41,7 +41,7 @@ let Stream = {
         $("#stream_loading").remove();
     },
     generatePartner: function (data) {
-        for (let i = 0; i < data.length; i++) {
+        for (let i = 1; i < data.length; i--) {
             $(".stream-row").append(Mustache.render(this.template, data[i]));
         }
     },
