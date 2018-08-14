@@ -20,7 +20,6 @@ main {
     border-left: solid #6a1b9a 1rem;
     color: white;
     background: #4a148c;
-    /*margin: 2rem 10rem 0 10rem;*/
     padding: 1rem;
 }
 
@@ -61,12 +60,6 @@ span.badge.blue-gray {
     background-color: #607d8b !important;
 }
 
-.linkblog .description_link {
-    background-color: #FFFFFF;
-    border-radius: 1rem;
-    padding: 1rem;
-}
-
 #net23 {
     list-style-type: none;
     margin: 0;
@@ -99,7 +92,7 @@ span.badge.blue-gray {
     color: white;
 }
 
-.card-image > img {
+.linkblog-image {
     position: relative;
     width:  100%;
     height: 200px;
