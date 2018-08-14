@@ -98,3 +98,11 @@ span.badge.blue-gray {
 #net23 li .net23:hover {
     color: white;
 }
+
+.card-image > img {
+    position: relative;
+    width:  100%;
+    height: 200px;
+    background: no-repeat 50% 50%;
+    background-size:     cover;
+}
