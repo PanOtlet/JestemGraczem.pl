@@ -1,8 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}{{ youtube.name }}{% endblock %}
-
 {% block player %}
     <div class="video-container">
         <iframe src="//www.youtube.com/embed/{{ youtube.video_id }}?rel=0" frameborder="0" allowfullscreen></iframe>

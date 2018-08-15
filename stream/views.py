@@ -13,6 +13,7 @@ from rest_framework import viewsets
 from twitch import TwitchClient
 
 from service import views
+from service.meta import meta_generator
 from .forms import YouTubeForm, TwitchForm
 from .models import Twitch, ESportTwitch, YouTube
 from .serializers import TwitchSerializer
@@ -29,6 +30,9 @@ def index(request):
 
 
 def add_youtube(request):
+    meta = {
+        'title': 'Dodaj film',
+    }
     if request.method == 'POST':
         form = YouTubeForm(request.POST)
         if form.is_valid():
@@ -61,10 +65,13 @@ def add_youtube(request):
                 })
     else:
         form = YouTubeForm()
-    return render(request, 'service/youtube_form.html', {'form': form})
+    return render(request, 'service/youtube_form.html', {'form': form, 'meta': meta_generator(meta)})
 
 
 def add_twitch(request):
+    meta = {
+        'title': 'Zareklamuj stream',
+    }
     if request.method == 'POST':
         form = TwitchForm(request.POST)
         if form.is_valid():
@@ -120,7 +127,7 @@ def add_twitch(request):
                 })
     else:
         form = TwitchForm()
-    return render(request, 'service/twitch_form.html', {'form': form})
+    return render(request, 'service/twitch_form.html', {'form': form, 'meta': meta_generator(meta)})
 
 
 def stream_api(request):

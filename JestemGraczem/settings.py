@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'meta',
     'rest_framework',
     'captcha'
 ]
@@ -110,12 +111,12 @@ WSGI_APPLICATION = 'JestemGraczem.wsgi.application'
 if 'TRAVIS' in os.environ:
     DATABASES = {
         'default': {
-            'ENGINE':   'django.db.backends.postgresql_psycopg2',
-            'NAME':     'travisci',
-            'USER':     'postgres',
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'travisci',
+            'USER': 'postgres',
             'PASSWORD': '',
-            'HOST':     'localhost',
-            'PORT':     '',
+            'HOST': 'localhost',
+            'PORT': '',
         }
     }
 else:
@@ -167,3 +168,21 @@ STATICFILES_DIRS = (
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Meta datas
+meta_description = 'JestemGraczem.pl jest innowacyjną platformą dla graczy! Serwery gier, reklamowanie filmów na YouTube oraz kanałów Streamingowych!'
+META = {
+    'title': "JestemGraczem.pl",
+    'description': meta_description,
+    'keywords': [
+        'jestemgraczem',
+        'jestem graczem',
+        'stream',
+        'twitch',
+        'reklama',
+        'promowanie',
+        'youtube',
+        'jak się wybić',
+        'twitch.tv'
+    ]
+}

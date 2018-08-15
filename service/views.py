@@ -7,6 +7,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.shortcuts import render, redirect
 from .models import GamesServersList, LinkBlog
 from django.shortcuts import get_object_or_404
+from .meta import meta_generator
 
 
 def index(request):
@@ -14,43 +15,87 @@ def index(request):
     ptr = LinkBlog.objects.filter(accepted=True).order_by('-id')[:4]
     return render(request, 'service/index.html', {
         'youtube': yt,
-        'ptr': ptr
+        'ptr': ptr,
+        'meta': meta_generator()
     })
 
 
 def livestreams(request):
-    return render(request, 'player/livestream.html')
+    meta = {
+        'title': 'LiveStream',
+        'description': 'Poznaj najlepsze streamy dostępne na platformie Twitch! Tylko od polskich twórców!',
+    }
+    return render(request, 'player/livestream.html', {
+        'meta': meta_generator(meta)
+    })
 
 
 def youtube(request):
+    meta = {
+        'title': 'Filmy na YouTube',
+        'description': 'Najciekawsze filmy dostępne na YouTube! Zapomnij o "Na czasie" - teraz masz JestemGraczem.pl',
+    }
     yt = YouTube.objects.filter(accepted=True).order_by('-id')[:20]
     return render(request, 'player/youtube.html', {
-        'youtube': yt
+        'youtube': yt,
+        'meta': meta_generator(meta)
     })
 
 
 def youtube_player(request, videoid):
     yt = get_object_or_404(YouTube, video_id=videoid)
+    meta = {
+        'title': yt.name,
+    }
     return render(request, 'player/youtube_video.html', {
-        'youtube': yt
+        'youtube': yt,
+        'meta': meta_generator(meta)
     })
 
 
 def gameservers(request):
     official_servers = GamesServersList.objects.filter(official=True)
     servers = GamesServersList.objects.filter(official=False)
+    meta = {
+        'title': 'Serwery gier',
+        'description': 'Profesjonalne serwery gier, TeamSpeak3 i inne! Dla każdego serwery do grania!',
+        'keywords': {
+            'minecraft',
+            'counter-strike',
+            'csgo',
+            'conan exiles',
+            'hurtworld',
+            'pubg',
+            'server',
+            'serwery',
+            'za darmo',
+            'free'
+        }
+    }
     return render(request, 'player/gameservers.html', {
         'servers': servers,
-        'official_servers': official_servers
+        'official_servers': official_servers,
+        'meta': meta_generator(meta)
     })
 
 
 def cooperation(request):
-    return render(request, 'service/cooperation.html')
+    meta = {
+        'title': 'Współpraca'
+    }
+    return render(request, 'service/cooperation.html', {
+        'meta': meta_generator(meta)
+    })
 
 
 def page_not_found(request, exception):
-    return render(request, 'service/404.html', status=404)
+    yt = YouTube.objects.filter(accepted=True).order_by('-id')[:2]
+    ptr = LinkBlog.objects.filter(accepted=True).order_by('-id')[:4]
+    return render(request, 'service/index.html', {
+        'youtube': yt,
+        'ptr': ptr,
+        'meta': meta_generator()
+    }, status=404)
 
 
 def registration(request):
