@@ -41,8 +41,15 @@ let Stream = {
         $("#stream_loading").remove();
     },
     generatePartner: function (data) {
-        for (let i = 1; i < data.length; i--) {
-            $(".stream-row").append(Mustache.render(this.template, data[i]));
+        let partner = [];
+        partner[0] = Math.floor(Math.random() * data.length);
+
+        do {
+            partner[1] = Math.floor(Math.random() * data.length);
+        } while (partner[0] === partner[1]);
+
+        for (let i = 0; i < partner.length; i++) {
+            $(".stream-row").append(Mustache.render(this.template, data[partner[i]]));
         }
     },
     generateESport: function (data) {
