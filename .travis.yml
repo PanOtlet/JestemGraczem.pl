@@ -2,8 +2,7 @@ language: python
 
 python:
   - 3.6
-  - 3.7-dev
-  - nightly
+  - 3.7
 
 services: postgresql
 
@@ -16,9 +15,10 @@ install:
   - pip install -r requirements.txt
 
 before_script:
-  - psql -c "CREATE DATABASE mydb;" -U postgres
+  - psql -c "CREATE DATABASE travis_ci_test;" -U postgres
 
 script:
   - python manage.py migrate
   - python manage.py makemigrations
   - python manage.py collectstatic
+  - python manage.py test
