@@ -148,7 +148,7 @@ def get_twitch(twitch_players, generate_if_empty=True):
     for player in twitch_players:
         twitch_players_ids += str(player.twitch_id) + ','
 
-    if twitch_players_ids is not '':
+    if not twitch_players_ids.__eq__(''):
         twitch_streams = twitch_client.streams.get_live_streams(twitch_players_ids)
     else:
         twitch_streams = []
