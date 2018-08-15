@@ -38,7 +38,7 @@ img[data-src] {
     opacity: 1;
 }
 
-img.responsive-img.hoverable {
+.hoverable {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -54,10 +54,6 @@ img.responsive-img.hoverable {
     bottom: 0;
     left: 0;
     z-index: -5;
-}
-
-span.badge.blue-gray {
-    background-color: #607d8b !important;
 }
 
 #net23 {
