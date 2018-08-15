@@ -6,6 +6,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.shortcuts import render, redirect
 from .models import GamesServersList, LinkBlog
+from django.shortcuts import get_object_or_404
 
 
 def index(request):
@@ -24,6 +25,13 @@ def livestreams(request):
 def youtube(request):
     yt = YouTube.objects.filter(accepted=True).order_by('-id')[:20]
     return render(request, 'player/youtube.html', {
+        'youtube': yt
+    })
+
+
+def youtube_player(request, videoid):
+    yt = get_object_or_404(YouTube, video_id=videoid)
+    return render(request, 'player/youtube_video.html', {
         'youtube': yt
     })
 

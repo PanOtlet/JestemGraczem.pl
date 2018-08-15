@@ -61,7 +61,7 @@
                     <div class="row">
                     {% for video in youtube %}
                         <div class="col m6 s12">
-                            <a href="https://youtube.com/watch?v={{ video.video_id }}">
+                            <a href="{% url 'youtube.video' videoid=video.video_id %}">
                                 <img src="https://img.youtube.com/vi/{{ video.video_id }}/maxresdefault.jpg"
                                      class="responsive-img">
                             </a>

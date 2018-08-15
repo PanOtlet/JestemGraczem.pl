@@ -35,80 +35,82 @@
     <meta name="theme-color" content="#ffffff">
 </head>
 <body>
-<!--[if lt IE 8]>
+{% block player %}
+    <!--[if lt IE 8]>
     <p class="browserupgrade">
         Używasz <strong>starej</strong> przeglądarki.
         Ogranij <a href="http://browsehappy.com/">nowoczesną przeglądarkę</a>.
     </p>
     <![endif]-->
-<div id="particle"></div>
-<ul id="net23">
-    <li><a href="https://23.net.pl" target="_blank" class="net23">23.net.pl</a></li>
-    <li><a href="https://23games.pl" target="_blank">23Games</a></li>
-{#    <li><a href="https://powojaku.pl" target="_blank">PoWojaku</a></li>#}
-    <li><a href="https://jestemgraczem.pl" target="_blank">JestemGraczem.pl</a></li>
-    <li><a href="https://otlet.pl" target="_blank">Otlet.pl</a></li>
-</ul>
-<nav class="purple darken-4" role="navigation">
-    <div class="nav-wrapper container">
-        <a id="logo-container" href="{% url 'index' %}" class="brand-logo tooltipped" data-position="bottom"
-           data-delay="50" data-tooltip="JestemGraczem.pl">
-            <i class="fa fa-gamepad" aria-hidden="true"></i>
-        </a>
-        <a href="#" data-activates="nav-mobile" class="button-collapse">
-            <i class="fa fa-bars"></i>
-        </a>
-        <ul class="right hide-on-med-and-down">
-            <li>
-                <a href="https://23.net.pl">
-                    <i class="fas fa-comments"></i> 23Net
-                </a>
-            </li>
-            <li>
-                <a href="{% url 'service.cooperation' %}">
-                    <i class="fa fa-user-plus"></i> Współpraca
-                </a>
-            </li>
-            <li>
-                <a href="{% url 'add.twitch' %}">
-                    <i class="fa fa-plus"></i> Dodaj stream
-                </a>
-            </li>
-            <li>
-                <a href="{% url 'add.youtube' %}">
-                    <i class="fa fa-plus"></i> Dodaj film
-                </a>
-            </li>
-        </ul>
+    <div id="particle"></div>
+    <ul id="net23">
+        <li><a href="https://23.net.pl" target="_blank" class="net23">23.net.pl</a></li>
+        <li><a href="https://23games.pl" target="_blank">23Games</a></li>
+        {#    <li><a href="https://powojaku.pl" target="_blank">PoWojaku</a></li>#}
+        <li><a href="https://jestemgraczem.pl" target="_blank">JestemGraczem.pl</a></li>
+        <li><a href="https://otlet.pl" target="_blank">Otlet.pl</a></li>
+    </ul>
+    <nav class="purple darken-4" role="navigation">
+        <div class="nav-wrapper container">
+            <a id="logo-container" href="{% url 'index' %}" class="brand-logo tooltipped" data-position="bottom"
+               data-delay="50" data-tooltip="JestemGraczem.pl">
+                <i class="fa fa-gamepad" aria-hidden="true"></i>
+            </a>
+            <a href="#" data-activates="nav-mobile" class="button-collapse">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <a href="https://23.net.pl">
+                        <i class="fas fa-comments"></i> 23Net
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'service.cooperation' %}">
+                        <i class="fa fa-user-plus"></i> Współpraca
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'add.twitch' %}">
+                        <i class="fa fa-plus"></i> Dodaj stream
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'add.youtube' %}">
+                        <i class="fa fa-plus"></i> Dodaj film
+                    </a>
+                </li>
+            </ul>
 
-        <ul class="side-nav" id="nav-mobile">
-            <li>
-                <a href="https://23.net.pl">
-                    <i class="fas fa-comments"></i> 23Net
-                </a>
-            </li>
-            <li>
-                <a href="{% url 'service.cooperation' %}">
-                    <i class="fa fa-user-plus"></i> Współpraca
-                </a>
-            </li>
-            <li>
-                <a href="https://www.reddit.com/r/jestemgraczem/comments/7w8suf/dodaj_sw%C3%B3j_stream_lub_film_na_youtube/">
-                    <i class="fa fa-plus"></i> Dodaj stream
-                </a>
-            </li>
-            <li>
-                <a href="{% url 'add.youtube' %}">
-                    <i class="fa fa-plus"></i> Dodaj film
-                </a>
-            </li>
-        </ul>
-    </div>
-</nav>
-{% block body %}
-    <main>
-        {% block main %}{% endblock %}
-    </main>
+            <ul class="side-nav" id="nav-mobile">
+                <li>
+                    <a href="https://23.net.pl">
+                        <i class="fas fa-comments"></i> 23Net
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'service.cooperation' %}">
+                        <i class="fa fa-user-plus"></i> Współpraca
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.reddit.com/r/jestemgraczem/comments/7w8suf/dodaj_sw%C3%B3j_stream_lub_film_na_youtube/">
+                        <i class="fa fa-plus"></i> Dodaj stream
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'add.youtube' %}">
+                        <i class="fa fa-plus"></i> Dodaj film
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    {% block body %}
+        <main>
+            {% block main %}{% endblock %}
+        </main>
+    {% endblock %}
 {% endblock %}
 <footer class="page-footer purple darken-4">
     <div class="container">
