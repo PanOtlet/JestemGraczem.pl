@@ -29,7 +29,7 @@ class ServiceIndexViewTests(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_youtube200(self):
-        url = reverse('youtube')
+        url = reverse('youtube', {'page': 1})
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
 
