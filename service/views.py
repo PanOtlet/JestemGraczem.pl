@@ -1,5 +1,7 @@
 from pprint import pprint
 
+from django.http import Http404
+
 from stream.models import YouTube
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout, authenticate
@@ -7,6 +9,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.shortcuts import render, redirect
 from .models import GamesServersList, LinkBlog
 from django.shortcuts import get_object_or_404
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from .meta import meta_generator
 
 
@@ -30,14 +33,18 @@ def livestreams(request):
     })
 
 
-def youtube(request):
+def youtube(request, page=1):
     meta = {
         'title': 'Filmy na YouTube',
         'description': 'Najciekawsze filmy dostępne na YouTube! Zapomnij o "Na czasie" - teraz masz JestemGraczem.pl',
     }
-    yt = YouTube.objects.filter(accepted=True).order_by('-id')[:20]
+
+    yt = YouTube.objects.filter(accepted=True).order_by('-id')
+    paginator = Paginator(yt, 1)
+    youtube_list = paginator.get_page(page)
+
     return render(request, 'player/youtube.html', {
-        'youtube': yt,
+        'youtube': youtube_list,
         'meta': meta_generator(meta)
     })
 
@@ -128,4 +135,4 @@ def login_view(request):
 @login_required()
 def logout_view(request):
     logout(request)
-    return render(request, 'service/index_old.html')
+    return render(request, 'service/index.html')

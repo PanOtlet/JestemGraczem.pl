@@ -145,7 +145,7 @@
                 event.preventDefault();
             });
             $("#panel-2").on("click", function (event) {
-                window.location.replace("{% url 'youtube' %}");
+                window.location.replace("{% url 'youtube' page=1 %}");
                 event.preventDefault();
             });
             $("#panel-3").on("click", function (event) {
