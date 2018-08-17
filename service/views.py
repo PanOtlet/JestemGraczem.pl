@@ -40,7 +40,7 @@ def youtube(request, page=1):
     }
 
     yt = YouTube.objects.filter(accepted=True).order_by('-id')
-    paginator = Paginator(yt, 1)
+    paginator = Paginator(yt, 6)
     youtube_list = paginator.get_page(page)
 
     return render(request, 'player/youtube.html', {
