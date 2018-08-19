@@ -80,35 +80,30 @@
         <div class="nav-wrapper container">
             <a id="logo-container" href="{% url 'index' %}" class="brand-logo tooltipped" data-position="bottom"
                data-delay="50" data-tooltip="JestemGraczem.pl">
-                <i class="fa fa-gamepad" aria-hidden="true"></i>
+                <i class="fas fa-gamepad" aria-hidden="true"></i>
             </a>
-            <a href="#" data-activates="nav-mobile" class="button-collapse">
-                <i class="fa fa-bars"></i>
+            <a href="#" data-activates="nav-mobile" class="sidenav">
+                <i class="fas fa-bars"></i>
             </a>
             <ul class="right hide-on-med-and-down">
                 <li>
                     <a href="https://23.net.pl">
-                        <i class="fas fa-comments"></i> 23Net
+                        23Net
                     </a>
                 </li>
                 <li>
                     <a href="{% url 'service.cooperation' %}">
-                        <i class="fa fa-user-plus"></i> Współpraca
+                        Współpraca
                     </a>
                 </li>
                 <li>
-                    <a href="{% url 'add.twitch' %}">
-                        <i class="fa fa-plus"></i> Dodaj stream
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'add.youtube' %}">
-                        <i class="fa fa-plus"></i> Dodaj film
+                    <a class="dropdown-trigger" href="#" data-target="menu_target">
+                        Dodaj
                     </a>
                 </li>
             </ul>
 
-            <ul class="side-nav" id="nav-mobile">
+            <ul class="sidenav" id="nav-mobile">
                 <li>
                     <a href="https://23.net.pl">
                         <i class="fas fa-comments"></i> 23Net
@@ -131,6 +126,19 @@
                 </li>
             </ul>
         </div>
+        <ul id="menu_target" class="dropdown-content">
+            <li class="divider"></li>
+            <li>
+                <a href="{% url 'add.twitch' %}">
+                    Stream
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'add.youtube' %}">
+                    Film
+                </a>
+            </li>
+        </ul>
     </nav>
     {% block body %}
         <main>
@@ -212,9 +220,9 @@
         </div>
     </div>
 </footer>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
 {#<script src="https://use.fontawesome.com/bd86b21063.js"></script>#}
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
       integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
@@ -223,21 +231,12 @@
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 <script>
     $(document).ready(function () {
-        $(".button-collapse").sideNav();
+        $(".sidenav").sidenav();
+        $(".tooltipped").tooltip();
+        $(".dropdown-trigger").dropdown();
         particlesJS("particle", particles_options);
     });
 </script>
-{#<script type="text/javascript">#}
-{#    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();#}
-{#    (function () {#}
-{#        var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];#}
-{#        s1.async = true;#}
-{#        s1.src = 'https://embed.tawk.to/5b75c068f31d0f771d83de0f/default';#}
-{#        s1.charset = 'UTF-8';#}
-{#        s1.setAttribute('crossorigin', '*');#}
-{#        s0.parentNode.insertBefore(s1, s0);#}
-{#    })();#}
-{#</script>#}
 {{ settings.0.variable|safe }}
 {% block javascripts %}{% endblock %}
 </body>
