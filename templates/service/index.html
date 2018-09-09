@@ -21,21 +21,27 @@
                 Polecane artykuły
             </h6>
             {% for link in ptr %}
-                <div class="col s6 m6 l3">
-                    <div class="card">
-                        <div class="card-image">
-                            <img class="linkblog-image" src="{{ link.image }}" alt="{{ link.title }}">
-                            <a class="btn-floating halfway-fab waves-effect waves-light red tooltipped"
-                               href="{{ link.url }}" rel="nofollow" target="_blank" data-position="bottom"
-                                data-delay="50" data-tooltip="Czytaj dalej...">
-                                <i class="fa fa-ellipsis-h"></i>
-                            </a>
-                        </div>
-                        <div class="card-content">
-                            <span class="card-title">{{ link.title }}</span>
-                        </div>
+            {% if forloop.first or forloop.counter == 5 %}
+                <div class="row">
+            {% endif %}
+            <div class="col s6 m6 l3">
+                <div class="card">
+                    <div class="card-image">
+                        <img class="linkblog-image" src="{{ link.image }}" alt="{{ link.title }}">
+                        <a class="btn-floating halfway-fab waves-effect waves-light red tooltipped"
+                           href="{{ link.url }}" rel="nofollow" target="_blank" data-position="bottom"
+                           data-delay="50" data-tooltip="Czytaj dalej...">
+                            <i class="fa fa-ellipsis-h"></i>
+                        </a>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title">{{ link.title }}</span>
                     </div>
                 </div>
+            </div>
+            {% if forloop.counter == 4 or forloop.last %}
+                </div>
+            {% endif %}
             {% endfor %}
         </div>
     </div>
@@ -47,7 +53,7 @@
                         Polecany Stream
                     </h6>
                     <div class="row stream-row">
-                        
+
                     </div>
                 </div>
             </div>
@@ -57,14 +63,14 @@
                         YouTube
                     </h6>
                     <div class="row">
-                    {% for video in youtube %}
-                        <div class="col m6 s12">
-                            <a href="{% url 'youtube.video' videoid=video.video_id %}">
-                                <img src="https://img.youtube.com/vi/{{ video.video_id }}/maxresdefault.jpg"
-                                     class="responsive-img">
-                            </a>
-                        </div>
-                    {% endfor %}
+                        {% for video in youtube %}
+                            <div class="col m6 s12">
+                                <a href="{% url 'youtube.video' videoid=video.video_id %}">
+                                    <img src="https://img.youtube.com/vi/{{ video.video_id }}/maxresdefault.jpg"
+                                         class="responsive-img">
+                                </a>
+                            </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

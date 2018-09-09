@@ -1,21 +1,18 @@
-from pprint import pprint
-
-from django.http import Http404
+from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.core.paginator import Paginator
+from django.shortcuts import get_object_or_404
+from django.shortcuts import render, redirect
 
 from stream.models import YouTube
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth import login, logout, authenticate
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.shortcuts import render, redirect
-from .models import GamesServersList, LinkBlog
-from django.shortcuts import get_object_or_404
-from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from .meta import meta_generator
+from .models import GamesServersList, LinkBlog
 
 
 def index(request):
     yt = YouTube.objects.filter(accepted=True).order_by('-id')[:2]
-    ptr = LinkBlog.objects.filter(accepted=True).order_by('-id')[:4]
+    ptr = LinkBlog.objects.filter(accepted=True).order_by('-id')[:8]
     return render(request, 'service/index.html', {
         'youtube': yt,
         'ptr': ptr,
