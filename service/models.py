@@ -28,7 +28,7 @@ class AppSettings(models.Model):
 
 
 class LinkBlog(models.Model):
-    title = models.CharField('Tytuł', max_length=40)
+    title = models.CharField('Tytuł', max_length=150)
     url = models.URLField('URL')
     description = models.TextField('Opis', null=True)
     image = models.URLField('Miniatura', null=True)
@@ -42,3 +42,15 @@ class LinkBlog(models.Model):
 
     def __str__(self):
         return 'LinkBlog: ' + self.title
+
+
+class RSS(models.Model):
+    title = models.CharField('Tytuł', max_length=150)
+    url = models.URLField('URL')
+
+    class Meta:
+        verbose_name = 'RSS'
+        verbose_name_plural = 'RSS'
+
+    def __str__(self):
+        return 'RSS: ' + self.title

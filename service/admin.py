@@ -1,6 +1,7 @@
 from django.contrib import admin
+
 from JestemGraczem.widgets import HtmlEditor
-from .models import GamesServersList, AppSettings, LinkBlog
+from .models import GamesServersList, AppSettings, LinkBlog, RSS
 
 
 @admin.register(GamesServersList)
@@ -11,6 +12,11 @@ class GameServersListAdmin(admin.ModelAdmin):
 @admin.register(LinkBlog)
 class LinkBlogAdmin(admin.ModelAdmin):
     list_display = ('title', 'accepted', 'url')
+
+
+@admin.register(RSS)
+class RSSAdmin(admin.ModelAdmin):
+    list_display = ('title', 'url')
 
 
 @admin.register(AppSettings)
