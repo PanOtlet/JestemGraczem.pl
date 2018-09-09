@@ -12,7 +12,7 @@ from .models import GamesServersList, LinkBlog
 
 def index(request):
     yt = YouTube.objects.filter(accepted=True).order_by('-id')[:2]
-    ptr = LinkBlog.objects.filter(accepted=True).order_by('-id')[:8]
+    ptr = LinkBlog.objects.filter(accepted=True).order_by('-id')[:20]
     return render(request, 'service/index.html', {
         'youtube': yt,
         'ptr': ptr,

@@ -88,6 +88,21 @@ img[data-src] {
     color: white;
 }
 
+.linkblog p {
+    padding: 1px;
+    text-align: center;
+    font-size: 60%;
+    background-color: purple;
+}
+
+.linkblog-partner {
+    color: #FFFFFF;
+}
+
+.linkblog-sponsored {
+    color: gold;
+}
+
 .linkblog-image {
     position: relative;
     width: 100%;

@@ -21,9 +21,9 @@
                 Polecane artykuły
             </h6>
             {% for link in ptr %}
-            {% if forloop.first or forloop.counter == 5 %}
-                <div class="row">
-            {% endif %}
+                {% if forloop.first or forloop.counter0|divisibleby:4 %}
+                    <div class="row">
+                {% endif %}
             <div class="col s6 m6 l3">
                 <div class="card">
                     <div class="card-image">
@@ -34,12 +34,18 @@
                             <i class="fa fa-ellipsis-h"></i>
                         </a>
                     </div>
-                    <div class="card-content">
+                    <div class="card-content linkblog">
                         <span class="card-title">{{ link.title }}</span>
+                        {% if link.sponsored %}
+                            <p class="linkblog-sponsored">Link sponsorowany</p>
+                        {% endif %}
+                        {% if link.partner %}
+                            <p class="linkblog-partner">Nasz partner &hearts;</p>
+                        {% endif %}
                     </div>
                 </div>
             </div>
-            {% if forloop.counter == 4 or forloop.last %}
+            {% if forloop.counter|divisibleby:4 or forloop.last %}
                 </div>
             {% endif %}
             {% endfor %}

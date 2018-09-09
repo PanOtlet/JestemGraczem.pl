@@ -25,7 +25,7 @@ class Command(BaseCommand):
                     LinkBlog.objects.create(
                         url=f.link,
                         description=f.summary,
-                        image='https://via.placeholder.com/640x480?text='+f.title,
+                        image='https://via.placeholder.com/640x480?text='+r.title,
                         accepted=True,
                         sponsored=True,
                         iframe=True,

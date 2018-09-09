@@ -34,6 +34,7 @@ class LinkBlog(models.Model):
     image = models.URLField('Miniatura', null=True)
     accepted = models.BooleanField('Opublikowany', default=False)
     sponsored = models.BooleanField('Artykuł sponsorowany', default=False)
+    partner = models.BooleanField('Partner', default=False)
     iframe = models.BooleanField('Ramka', default=True)
 
     class Meta:

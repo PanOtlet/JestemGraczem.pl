@@ -11,7 +11,7 @@ class GameServersListAdmin(admin.ModelAdmin):
 
 @admin.register(LinkBlog)
 class LinkBlogAdmin(admin.ModelAdmin):
-    list_display = ('title', 'accepted', 'url')
+    list_display = ('title', 'accepted', 'partner', 'sponsored', 'url')
 
 
 @admin.register(RSS)
