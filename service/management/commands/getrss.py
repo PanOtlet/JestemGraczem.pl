@@ -27,7 +27,8 @@ class Command(BaseCommand):
                         description=f.summary,
                         image='https://via.placeholder.com/640x480?text='+r.title,
                         accepted=True,
-                        sponsored=True,
+                        sponsored=False,
+                        partner=True,
                         iframe=True,
                         title=f.title
                     )
