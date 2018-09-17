@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "c71d7c992e99b523216c1ac2fde6f94c63823a1965a03a764dbf6c4754a714d2"
+            "sha256": "390406a3d1f5a6e79504cb2718800c14d2ab4c8f00f49c459a3d1f541ee8142d"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -155,11 +155,11 @@
         },
         "python-twitch-client": {
             "hashes": [
-                "sha256:7db78cc1c11e1500cc90dd3d9c83c2a56f275b9abaa4473c104258590a34d8c9",
-                "sha256:f02cde0ba3fe2bda65009026b962f2caa54abcfc69d05898637397faeffe12c7"
+                "sha256:bf92f2866fb55d57db5fcd0979f8e464f5e81181a30d485b5492df112cb7e2b3",
+                "sha256:c23f8da52726e5fba7b217f1a959aeee55764e2be6b19dd2c004c852ba29679b"
             ],
             "index": "pypi",
-            "version": "==0.5.1"
+            "version": "==0.6.0"
         },
         "pytz": {
             "hashes": [
