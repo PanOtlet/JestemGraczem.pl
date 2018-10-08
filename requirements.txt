@@ -12,7 +12,7 @@ feedparser==5.2.1
 gunicorn==19.8.1
 idna==2.7
 psycopg2-binary==2.7.5
-python-binary-memcached==0.27.0
+python-binary-memcached==0.28.0
 python-twitch-client==0.6.0
 pytz==2018.5
 requests==2.19.1
