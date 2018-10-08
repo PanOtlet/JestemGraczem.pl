@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "c0889e66093ed7eafe049e3dce98283a1356b19289ba3809fa2295155661c8c4"
+            "sha256": "c7163b87efb8ddf7673adf04fbf5de33da56aca6463d5b092641bedecdaf8898"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -148,10 +148,10 @@
         },
         "python-binary-memcached": {
             "hashes": [
-                "sha256:5ed0b41aea0a736e004d01ad5edbdb65211e054def49f9ce1a4c57061ec1c7ba"
+                "sha256:8cc4e71c20a2d9e75c30669c4bef35ee407bbfc72a631fc7ad130a2957bd1ed1"
             ],
             "index": "pypi",
-            "version": "==0.27.0"
+            "version": "==0.28.0"
         },
         "python-twitch-client": {
             "hashes": [
