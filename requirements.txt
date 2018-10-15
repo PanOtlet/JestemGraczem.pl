@@ -9,7 +9,7 @@ django-recaptcha==1.4.0
 django==2.1.2
 djangorestframework==3.8.2
 feedparser==5.2.1
-gunicorn==19.8.1
+gunicorn==19.9.0
 idna==2.7
 psycopg2-binary==2.7.5
 python-binary-memcached==0.27.0
