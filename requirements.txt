@@ -15,7 +15,7 @@ psycopg2-binary==2.7.6.1
 python-binary-memcached==0.28.0
 python-twitch-client==0.6.0
 pytz==2018.7
-requests==2.20.0
+requests==2.20.1
 simplejson==3.16.0
 six==1.11.0
 ts3==1.0.11
