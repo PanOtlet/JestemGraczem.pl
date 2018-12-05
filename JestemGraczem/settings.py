@@ -8,6 +8,7 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 ALLOWED_HOSTS = [
     'jestemgraczem.pl',
+    'api.jestemgraczem.pl',
     'localhost',
     '127.0.0.1',
     'jestemgraczem.herokuapp.com',
