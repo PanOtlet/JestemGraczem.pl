@@ -10,7 +10,7 @@ django==2.1.4
 djangorestframework==3.9.0
 feedparser==5.2.1
 gunicorn==19.9.0
-idna==2.7
+idna==2.8
 psycopg2-binary==2.7.6.1
 python-binary-memcached==0.28.0
 python-twitch-client==0.6.0
